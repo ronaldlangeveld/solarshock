@@ -10,6 +10,10 @@ describe('Inverter Status Use Case', function() {
         inverterStatusUseCase = new InverterStatusUseCaseImpl(new InMemoryInverterStatusRepository());
     });
 
+    afterEach(function() {
+        jest.useRealTimers();
+    });
+
     it('should create an inverter status', async function() {
         const dataset = {
             inverterId: '1',
@@ -138,6 +142,7 @@ describe('Inverter Status Use Case', function() {
                 currentProduction: 1500,
                 createdAt: expect.any(Date)
             }]);
+
     });
 
     it('can sort inverter status in ascending order', async function() {
