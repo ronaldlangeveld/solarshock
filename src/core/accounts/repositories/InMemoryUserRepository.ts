@@ -1,7 +1,7 @@
 import IUserRepository from './IUserRepository';
 import User from '../entities/User';
 
-import InMemoryRepository from '../../../infrastructure/InMemoryRepository';
+import InMemoryRepository from '../../../infrastructure/data/InMemoryRepository';
 
 class InMemoryUserRepository extends InMemoryRepository<User> implements IUserRepository {
     async create(user: User): Promise<User> {

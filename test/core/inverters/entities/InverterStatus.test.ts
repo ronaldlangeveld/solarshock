@@ -1,4 +1,3 @@
-import Inverter from '../../../../src/core/inverter/entities/Inverter';
 import InverterStatus from '../../../../src/core/inverter/entities/InverterStatus';
 
 describe('InverterStatus Entity', function () {
