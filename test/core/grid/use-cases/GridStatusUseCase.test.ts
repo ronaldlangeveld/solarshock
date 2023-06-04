@@ -1,21 +1,21 @@
-import GridStatus from "../../../../src/core/grid/entities/GridStatus";
+import GridStatus from '../../../../src/core/grid/entities/GridStatus';
 import GridStatusUseCaseImpl from '../../../../src/core/grid/use-cases/GridStatusUseCaseImpl';
-import IGridStatusUseCase from "../../../../src/core/grid/use-cases/IGridStatusUseCase";
+import IGridStatusUseCase from '../../../../src/core/grid/use-cases/IGridStatusUseCase';
 import InMemoryGridStatusRepository from '../../../../src/core/grid/repositories/InMemoryGridStatusRepository';
 
-describe('Grid Status Use Case', function() {
+describe('Grid Status Use Case', function () {
     let gridStatusUseCase: IGridStatusUseCase;
 
-    beforeEach(function() {
+    beforeEach(function () {
         gridStatusUseCase = new GridStatusUseCaseImpl(new InMemoryGridStatusRepository());
     });
 
-    afterEach(function() {
+    afterEach(function () {
         jest.useRealTimers();
     });
 
-    describe('Grid Status', function() {
-        it('should create a grid status', async function() {
+    describe('Grid Status', function () {
+        it('should create a grid status', async function () {
             const gridStatus = await GridStatus.create({
                 gridFrequency: 50,
                 inverterId: '1'
@@ -24,7 +24,7 @@ describe('Grid Status Use Case', function() {
             expect(createdGridStatus).toBeInstanceOf(GridStatus);
         });
 
-        it('should not create a grid status if same as previous', async function() {
+        it('should not create a grid status if same as previous', async function () {
             const gridStatus = await GridStatus.create({
                 gridFrequency: 50,
                 inverterId: '1'
@@ -33,7 +33,7 @@ describe('Grid Status Use Case', function() {
             await expect(gridStatusUseCase.createGridStatus(gridStatus)).rejects.toThrowError();
         });
 
-        it('should find grid status by inverter id', async function() {
+        it('should find grid status by inverter id', async function () {
             const gridStatus = await GridStatus.create({
                 gridFrequency: 50,
                 inverterId: '1'
@@ -43,12 +43,12 @@ describe('Grid Status Use Case', function() {
             const foundGridStatus = await gridStatusUseCase.getGridStatusByInverterId('1', 1, 'desc');
             expect(foundGridStatus).toBeInstanceOf(Array);
 
-            if(foundGridStatus) {
+            if (foundGridStatus) {
                 expect(foundGridStatus[0]).toBeInstanceOf(GridStatus);
             }
         });
 
-        it('should find grid status by id', async function() {
+        it('should find grid status by id', async function () {
             const gridStatus = await GridStatus.create({
                 gridFrequency: 50,
                 inverterId: '1'
@@ -59,7 +59,7 @@ describe('Grid Status Use Case', function() {
             expect(foundGridStatus).toBeInstanceOf(GridStatus);
         });
 
-        it('should find all grid statuses', async function() {
+        it('should find all grid statuses', async function () {
             const gridStatus = await GridStatus.create({
                 gridFrequency: 50,
                 inverterId: '1'
@@ -69,12 +69,12 @@ describe('Grid Status Use Case', function() {
             const foundGridStatuses = await gridStatusUseCase.getAllGridStatuses();
             expect(foundGridStatuses).toBeInstanceOf(Array);
 
-            if(foundGridStatuses) {
+            if (foundGridStatuses) {
                 expect(foundGridStatuses[0]).toBeInstanceOf(GridStatus);
             }
         });
 
-        it('should sort grid statuses in ascending order', async function() {
+        it('should sort grid statuses in ascending order', async function () {
             jest.useFakeTimers();
             const gridStatus = await GridStatus.create({
                 gridFrequency: 50,
@@ -93,12 +93,12 @@ describe('Grid Status Use Case', function() {
             const foundGridStatuses = await gridStatusUseCase.getGridStatusByInverterId('1', 2, 'asc');
             expect(foundGridStatuses).toBeInstanceOf(Array);
 
-            if(foundGridStatuses) {
+            if (foundGridStatuses) {
                 expect(foundGridStatuses[1].createdAt.getTime()).toBeGreaterThan(foundGridStatuses[0].createdAt.getTime());
             }
         });
 
-        it('should sort grid statuses in descending order', async function() {
+        it('should sort grid statuses in descending order', async function () {
             jest.useFakeTimers();
 
             const gridStatus = await GridStatus.create({
@@ -117,7 +117,7 @@ describe('Grid Status Use Case', function() {
             await gridStatusUseCase.createGridStatus(gridStatus2);
             const foundGridStatuses = await gridStatusUseCase.getGridStatusByInverterId('1', 2, 'desc');
             expect(foundGridStatuses).toBeInstanceOf(Array);
-            if(foundGridStatuses) {
+            if (foundGridStatuses) {
                 expect(foundGridStatuses[0].createdAt.getTime()).toBeGreaterThan(foundGridStatuses[1].createdAt.getTime());
             }
         });

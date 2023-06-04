@@ -1,16 +1,16 @@
-import Inverter from "../../../../src/core/inverter/entities/Inverter";
+import Inverter from '../../../../src/core/inverter/entities/Inverter';
 import InverterUseCaseImpl from '../../../../src/core/inverter/use-cases/InverterUseCaseImpl';
-import IInverterUseCase from "../../../../src/core/inverter/use-cases/IInverterUseCase";
-import InMemoryInverterRepository from "../../../../src/core/inverter/repositories/InMemoryInverterRepository";
+import IInverterUseCase from '../../../../src/core/inverter/use-cases/IInverterUseCase';
+import InMemoryInverterRepository from '../../../../src/core/inverter/repositories/InMemoryInverterRepository';
 
-describe('InverterUseCaseImpl', function() {
+describe('InverterUseCaseImpl', function () {
     let inverterUseCase: IInverterUseCase;
 
-    beforeEach(function() {
+    beforeEach(function () {
         inverterUseCase = new InverterUseCaseImpl(new InMemoryInverterRepository());
     });
 
-    it('should create an inverter', async function() {
+    it('should create an inverter', async function () {
         const dataset = {
             name: 'Home Inverter',
             accountId: '1',
@@ -18,8 +18,8 @@ describe('InverterUseCaseImpl', function() {
             model: 'Powerwall 3',
             serial: 'unique_serial',
             maxPower: 7000,
-            batteryCapacity: 5200,
-        }
+            batteryCapacity: 5200
+        };
 
         const inverter = await Inverter.create(dataset);
 
@@ -28,7 +28,7 @@ describe('InverterUseCaseImpl', function() {
         expect(createdInverter).toBeInstanceOf(Inverter);
     });
 
-    it('should throw if inverter name already in use', async function() {
+    it('should throw if inverter name already in use', async function () {
         const dataset = {
             name: 'Home Inverter',
             accountId: '1',
@@ -36,8 +36,8 @@ describe('InverterUseCaseImpl', function() {
             model: 'Powerwall 3',
             serial: 'unique_serial',
             maxPower: 7000,
-            batteryCapacity: 5200,
-        }
+            batteryCapacity: 5200
+        };
 
         const inverter = await Inverter.create(dataset);
 
@@ -48,7 +48,7 @@ describe('InverterUseCaseImpl', function() {
         await expect(inverterUseCase.createInverter(inverter)).rejects.toThrow();
     });
 
-    it('should throw if inverter name is empty', async function() {
+    it('should throw if inverter name is empty', async function () {
         const dataset = {
             name: '',
             accountId: '1',
@@ -56,15 +56,15 @@ describe('InverterUseCaseImpl', function() {
             model: 'Powerwall 3',
             serial: 'unique_serial',
             maxPower: 7000,
-            batteryCapacity: 5200,
-        }
+            batteryCapacity: 5200
+        };
 
         const inverter = await Inverter.create(dataset);
 
         await expect(inverterUseCase.createInverter(inverter)).rejects.toThrow();
     });
 
-    it('should update an inverter', async function() {
+    it('should update an inverter', async function () {
         const dataset = {
             name: 'Home Inverter',
             accountId: '1',
@@ -72,8 +72,8 @@ describe('InverterUseCaseImpl', function() {
             model: 'Powerwall 3',
             serial: 'unique_serial',
             maxPower: 7000,
-            batteryCapacity: 5200,
-        }
+            batteryCapacity: 5200
+        };
 
         const inverter = await Inverter.create(dataset);
 
@@ -88,7 +88,7 @@ describe('InverterUseCaseImpl', function() {
         expect(updatedInverter.name).toBe('Backup Inverter');
     });
 
-    it('should throw if inverter name already in use when updating', async function() {
+    it('should throw if inverter name already in use when updating', async function () {
         const dataset = {
             name: 'Home Inverter',
             accountId: '1',
@@ -96,8 +96,8 @@ describe('InverterUseCaseImpl', function() {
             model: 'Powerwall 3',
             serial: 'unique_serial',
             maxPower: 7000,
-            batteryCapacity: 5200,
-        }
+            batteryCapacity: 5200
+        };
 
         const dataset2 = {
             name: 'Home Inverter',
@@ -106,8 +106,8 @@ describe('InverterUseCaseImpl', function() {
             model: 'Powerwall 3',
             serial: 'unique_serial421',
             maxPower: 7000,
-            batteryCapacity: 5200,
-        }
+            batteryCapacity: 5200
+        };
 
         const inverter = await Inverter.create(dataset);
 
@@ -120,7 +120,7 @@ describe('InverterUseCaseImpl', function() {
         await expect(inverterUseCase.updateInverter(inverter2)).rejects.toThrow();
     });
 
-    it('should throw if inverter name is empty when updating', async function() {
+    it('should throw if inverter name is empty when updating', async function () {
         const dataset = {
             name: 'Home Inverter',
             accountId: '1',
@@ -128,8 +128,8 @@ describe('InverterUseCaseImpl', function() {
             model: 'Powerwall 3',
             serial: 'unique_serial421',
             maxPower: 7000,
-            batteryCapacity: 5200,
-        }
+            batteryCapacity: 5200
+        };
 
         const inverter = await Inverter.create(dataset);
 
@@ -140,10 +140,9 @@ describe('InverterUseCaseImpl', function() {
         createdInverter.name = '';
 
         await expect(inverterUseCase.updateInverter(createdInverter)).rejects.toThrow();
-
     });
 
-    it('should delete an inverter', async function() {
+    it('should delete an inverter', async function () {
         const dataset = {
             name: 'Home Inverter',
             accountId: '1',
@@ -151,8 +150,8 @@ describe('InverterUseCaseImpl', function() {
             model: 'Powerwall 3',
             serial: 'unique_serial',
             maxPower: 7000,
-            batteryCapacity: 5200,
-        }
+            batteryCapacity: 5200
+        };
 
         const inverter = await Inverter.create(dataset);
 
@@ -165,7 +164,7 @@ describe('InverterUseCaseImpl', function() {
         expect(deletedInverter).toBeInstanceOf(Inverter);
     });
 
-    it('should find inverter by id', async function() {
+    it('should find inverter by id', async function () {
         const dataset = {
             name: 'Home Inverter',
             accountId: '1',
@@ -173,8 +172,8 @@ describe('InverterUseCaseImpl', function() {
             model: 'Powerwall 3',
             serial: 'unique_serial',
             maxPower: 7000,
-            batteryCapacity: 5200,
-        }
+            batteryCapacity: 5200
+        };
 
         const inverter = await Inverter.create(dataset);
 
@@ -187,7 +186,7 @@ describe('InverterUseCaseImpl', function() {
         expect(foundInverter).toBeInstanceOf(Inverter);
     });
 
-    it('should find inverter by name', async function() {
+    it('should find inverter by name', async function () {
         const dataset = {
             name: 'Home Inverter',
             accountId: '1',
@@ -195,8 +194,8 @@ describe('InverterUseCaseImpl', function() {
             model: 'Powerwall 3',
             serial: 'unique_serial',
             maxPower: 7000,
-            batteryCapacity: 5200,
-        }
+            batteryCapacity: 5200
+        };
 
         const inverter = await Inverter.create(dataset);
 
@@ -209,7 +208,7 @@ describe('InverterUseCaseImpl', function() {
         expect(foundInverter).toBeInstanceOf(Inverter);
     });
 
-    it('should find inverters by account id', async function() {
+    it('should find inverters by account id', async function () {
         const dataset = {
             name: 'Home Inverter',
             accountId: '1',
@@ -217,8 +216,8 @@ describe('InverterUseCaseImpl', function() {
             model: 'Powerwall 3',
             serial: 'unique_serial',
             maxPower: 7000,
-            batteryCapacity: 5200,
-        }
+            batteryCapacity: 5200
+        };
 
         const dataset2 = {
             name: 'Home Inverter 2',
@@ -227,8 +226,8 @@ describe('InverterUseCaseImpl', function() {
             model: 'Powerwall 3',
             serial: 'unique_serial421',
             maxPower: 7000,
-            batteryCapacity: 5200,
-        }
+            batteryCapacity: 5200
+        };
 
         const inverter = await Inverter.create(dataset);
 
@@ -247,7 +246,7 @@ describe('InverterUseCaseImpl', function() {
         expect(foundInverters.length).toBe(1);
     });
 
-    it('should find all inverters', async function() {
+    it('should find all inverters', async function () {
         const dataset = {
             name: 'Home Inverter',
             accountId: '1',
@@ -255,8 +254,8 @@ describe('InverterUseCaseImpl', function() {
             model: 'Powerwall 3',
             serial: 'unique_serial',
             maxPower: 7000,
-            batteryCapacity: 5200,
-        }
+            batteryCapacity: 5200
+        };
 
         const dataset2 = {
             name: 'Home Inverter 2',
@@ -265,8 +264,8 @@ describe('InverterUseCaseImpl', function() {
             model: 'Powerwall 3',
             serial: 'unique_serial421',
             maxPower: 7000,
-            batteryCapacity: 5200,
-        }
+            batteryCapacity: 5200
+        };
 
         const inverter = await Inverter.create(dataset);
 
@@ -283,6 +282,5 @@ describe('InverterUseCaseImpl', function() {
         const foundInverters = await inverterUseCase.findAllInverters();
 
         expect(foundInverters.length).toBe(2);
-
     });
 });

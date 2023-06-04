@@ -45,7 +45,6 @@ describe('User Use Case', function () {
             await userUseCase.createUser(user);
 
             await expect(userUseCase.createUser(user)).rejects.toThrowError();
-
         });
 
         it('should throw an error if user email is empty', async function () {
@@ -99,7 +98,7 @@ describe('User Use Case', function () {
 
             expect(updatedUser3?.email).toEqual('dumbledore@hogwarts.co.uk');
 
-            let newPassword = 'password';
+            const newPassword = 'password';
 
             createdUser.password = await createdUser.updatePassword(newPassword);
 
@@ -130,7 +129,6 @@ describe('User Use Case', function () {
             expect(foundUser).toBeInstanceOf(User);
 
             expect(foundUser?.id).toEqual(createdUser.id);
-            
         });
 
         it('should return null if user with id does not exist', async function () {
@@ -139,7 +137,7 @@ describe('User Use Case', function () {
         });
 
         it('should return null if user with email does not exist', async function () {
-            const foundUser = await userUseCase.findUserByEmail('ron@hogwarts.co.uk')
+            const foundUser = await userUseCase.findUserByEmail('ron@hogwarts.co.uk');
             expect(foundUser).toBeNull();
         });
 
@@ -161,7 +159,6 @@ describe('User Use Case', function () {
             expect(foundUser).toBeInstanceOf(User);
 
             expect(foundUser?.email).toEqual(createdUser.email);
-
         });
 
         it('should create batch users', async function () {
@@ -247,7 +244,6 @@ describe('User Use Case', function () {
         });
 
         it('should find all users', async function () {
-
             const user = await User.create({
                 email: 'dobby@hogwarts.co.uk',
                 password: 'socksislife1992',
@@ -276,11 +272,9 @@ describe('User Use Case', function () {
 
             expect(foundUsers).toBeInstanceOf(Array);
             expect(foundUsers.length).toEqual(2);
-
         });
 
         it('should delete a user', async function () {
-
             const user = await User.create({
                 email: 'dobby@hogwarts.co.uk',
                 password: 'socksislife1992',
@@ -314,8 +308,6 @@ describe('User Use Case', function () {
             expect(foundUsers).toBeInstanceOf(Array);
 
             expect(foundUsers.length).toEqual(1);
-
         });
-
     });
 });

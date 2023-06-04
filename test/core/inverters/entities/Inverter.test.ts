@@ -1,7 +1,7 @@
 import Inverter from '../../../../src/core/inverter/entities/Inverter';
 
-describe('Inverter Entity', function() {
-    it('should create an inverter entity', async function() {
+describe('Inverter Entity', function () {
+    it('should create an inverter entity', async function () {
         const dataset = {
             name: 'Home Inverter',
             accountId: '1',
@@ -9,14 +9,14 @@ describe('Inverter Entity', function() {
             model: 'Powerwall 3',
             serial: 'unique_serial',
             maxPower: 7000,
-            batteryCapacity: 5200,
-        }
+            batteryCapacity: 5200
+        };
 
         const inverter = await Inverter.create(dataset);
         expect(inverter).toBeInstanceOf(Inverter);
     });
 
-    it('should return an inverter entity as JSON', async function() {
+    it('should return an inverter entity as JSON', async function () {
         const dataset = {
             name: 'Home Inverter',
             accountId: '1',
@@ -24,8 +24,8 @@ describe('Inverter Entity', function() {
             model: 'Powerwall 3',
             serial: 'unique_serial',
             maxPower: 7000,
-            batteryCapacity: 5200,
-        }
+            batteryCapacity: 5200
+        };
 
         const inverter = await Inverter.create(dataset);
 
@@ -42,5 +42,4 @@ describe('Inverter Entity', function() {
         expect(inverterJson).toHaveProperty('maxPower');
         expect(inverterJson).toHaveProperty('batteryCapacity');
     });
-
-})
+});

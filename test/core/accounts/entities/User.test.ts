@@ -38,7 +38,6 @@ describe('User Entity', function () {
         expect(userJson).toHaveProperty('lastName');
         expect(userJson).toHaveProperty('role');
         expect(userJson).toHaveProperty('accountId');
-
     });
 
     it('should hash the password', async function () {
@@ -54,6 +53,5 @@ describe('User Entity', function () {
 
         const user = await User.create(dataset);
         expect(user.password).not.toBe(dataset.password);
-
     });
 });
