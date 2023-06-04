@@ -1,4 +1,4 @@
-import InMemoryRepository from '../../../infrastructure/data/InMemoryRepository';
+import InMemoryRepository from '../../../infrastructure/data/Memory/InMemoryRepository';
 import IGridStatusRepository from './IGridStatusRepository';
 import GridStatus from '../entities/GridStatus';
 

@@ -1,6 +1,6 @@
 import IInverterStatusRepository from './IInverterStatusRepository';
 import InverterStatus from '../entities/InverterStatus';
-import InMemoryRepository from '../../../infrastructure/data/InMemoryRepository';
+import InMemoryRepository from '../../../infrastructure/data/Memory/InMemoryRepository';
 
 class InMemoryInverterStatusRepository extends InMemoryRepository<InverterStatus> implements IInverterStatusRepository {
     async create(inverterStatus: InverterStatus): Promise<InverterStatus> {

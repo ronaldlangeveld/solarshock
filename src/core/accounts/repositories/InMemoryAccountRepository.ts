@@ -1,6 +1,6 @@
 import Account from '../entities/Account';
 import IAccountRepository from './IAccountRepository';
-import InMemoryRepository from '../../../infrastructure/data/InMemoryRepository';
+import InMemoryRepository from '../../../infrastructure/data/Memory/InMemoryRepository';
 
 class InMemoryAccountRepository extends InMemoryRepository<Account> implements IAccountRepository {
     async create(account: Account): Promise<Account> {

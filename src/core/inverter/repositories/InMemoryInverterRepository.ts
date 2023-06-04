@@ -1,4 +1,4 @@
-import InMemoryRepository from '../../../infrastructure/data/InMemoryRepository';
+import InMemoryRepository from '../../../infrastructure/data/Memory/InMemoryRepository';
 import IInverterRepository from './IinverterRepository';
 import Inverter from '../entities/Inverter';
 

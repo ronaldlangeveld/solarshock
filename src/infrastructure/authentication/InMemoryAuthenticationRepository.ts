@@ -1,4 +1,4 @@
-import InMemoryRepository from '../data/InMemoryRepository';
+import InMemoryRepository from '../data/Memory/InMemoryRepository';
 import IAuthenticationRepository from './IAuthenticationRepository';
 import AuthenticationToken from './AuthenticationToken';
 
