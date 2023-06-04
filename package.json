@@ -6,9 +6,10 @@
     "types": "build/index.d.ts",
     "scripts": {
         "dev": "tsc --watch --preserveWatchOutput --sourceMap",
+        "test:watch": "jest --watchAll --collectCoverage",
         "build": "tsc",
         "prepare": "tsc",
-        "test": "jest --watchAll --collectCoverage",
+        "test": "jest",
         "test:types": "tsc --noEmit",
         "lint:code": "eslint src/ --ext .ts --cache",
         "lint": "yarn lint:code && yarn lint:test",
