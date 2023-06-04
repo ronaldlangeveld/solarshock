@@ -41,7 +41,7 @@ class InverterStatus {
             batteryLevel: inverterStatus.batteryLevel,
             currentConsumption: inverterStatus.currentConsumption,
             currentProduction: inverterStatus.currentProduction
-        }
+        };
     }
 
     static async create(data: InverterStatusRequestModel): Promise<InverterStatus> {
@@ -56,6 +56,6 @@ class InverterStatus {
 
         return new InverterStatus(dataset);
     }
-};
+}
 
 export default InverterStatus;

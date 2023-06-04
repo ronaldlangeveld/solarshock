@@ -1,6 +1,6 @@
-import InMemoryRepository from "../../../infrastructure/InMemoryRepository";
-import IInverterRepository from "./IinverterRepository";
-import Inverter from "../entities/Inverter";
+import InMemoryRepository from '../../../infrastructure/InMemoryRepository';
+import IInverterRepository from './IinverterRepository';
+import Inverter from '../entities/Inverter';
 
 class InMemoryInverterRepository extends InMemoryRepository<Inverter> implements IInverterRepository {
     async create(inverter: Inverter): Promise<Inverter> {
@@ -22,12 +22,12 @@ class InMemoryInverterRepository extends InMemoryRepository<Inverter> implements
 
     async findByName(name: string): Promise<Inverter | null> {
         const inverters = await super.findAll();
-        return inverters.find((inverter) => inverter.name === name) || null;
+        return inverters.find(inverter => inverter.name === name) || null;
     }
 
     async findByAccountId(accountId: string): Promise<Inverter[]> {
         const inverters = await super.findAll();
-        return inverters.filter((inverter) => inverter.accountId === accountId);
+        return inverters.filter(inverter => inverter.accountId === accountId);
     }
 
     async findAll(): Promise<Inverter[]> {

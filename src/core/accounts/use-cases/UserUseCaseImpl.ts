@@ -1,6 +1,6 @@
-import IUserRepository from "../repositories/IUserRepository";
-import User from "../entities/User";
-import IUserUseCase from "./IUserUseCase";
+import IUserRepository from '../repositories/IUserRepository';
+import User from '../entities/User';
+import IUserUseCase from './IUserUseCase';
 
 class UserUseCaseImpl implements IUserUseCase {
     private userRepository: IUserRepository;

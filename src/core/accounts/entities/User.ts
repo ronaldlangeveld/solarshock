@@ -6,7 +6,7 @@ export enum UserRoles {
     USER = 'user',
   }
   
-  export enum UserStatus {
+export enum UserStatus {
     ACTIVE = 'active',
     INACTIVE = 'inactive',
     BANNED = 'banned',
@@ -71,8 +71,6 @@ class User {
         this.status = data.status;
         this.accountId = data.accountId;
     }
-
-
 
     toJson(user: User): UserResponseModel {
         return {

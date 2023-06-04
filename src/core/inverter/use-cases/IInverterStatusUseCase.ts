@@ -1,4 +1,4 @@
-import InverterStatus from "../entities/InverterStatus";
+import InverterStatus from '../entities/InverterStatus';
 
 interface IInverterStatusUseCase {
     createInverterStatus(inverterStatus: InverterStatus): Promise<InverterStatus>;

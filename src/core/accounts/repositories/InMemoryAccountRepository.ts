@@ -22,7 +22,7 @@ class InMemoryAccountRepository extends InMemoryRepository<Account> implements I
 
     async findByName(name: string): Promise<Account | null> {
         const accounts = await super.findAll();
-        return accounts.find((account) => account.name === name) || null;
+        return accounts.find(account => account.name === name) || null;
     }
 
     async findAll(): Promise<Account[]> {

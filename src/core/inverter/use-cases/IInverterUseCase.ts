@@ -1,4 +1,4 @@
-import Inverter from "../entities/Inverter";
+import Inverter from '../entities/Inverter';
 
 interface IInverterUseCase {
     createInverter(inverter: Inverter): Promise<Inverter>;

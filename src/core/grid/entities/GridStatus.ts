@@ -30,8 +30,8 @@ class GridStatus {
             id: gridStatus.id,
             createdAt: gridStatus.createdAt,
             gridFrequency: gridStatus.gridFrequency,
-            inverterId: gridStatus.inverterId,
-        }
+            inverterId: gridStatus.inverterId
+        };
     }
 
     static async create(gridStatus: GridStatusRequestModel): Promise<GridStatus> {
@@ -39,7 +39,7 @@ class GridStatus {
             id: crypto.randomUUID(),
             createdAt: new Date(),
             gridFrequency: gridStatus.gridFrequency,
-            inverterId: gridStatus.inverterId,
+            inverterId: gridStatus.inverterId
         };
 
         return new GridStatus(dataset);

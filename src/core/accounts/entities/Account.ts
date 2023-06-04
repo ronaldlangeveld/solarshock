@@ -29,7 +29,7 @@ class Account {
             id: account.id,
             createdAt: account.createdAt,
             updatedAt: account.updatedAt,
-            name: account.name,
+            name: account.name
         };
     }
 
@@ -38,7 +38,7 @@ class Account {
             id: crypto.randomUUID(),
             createdAt: new Date(),
             updatedAt: new Date(),
-            name: data.name,
+            name: data.name
         };
         return new Account(dataset);
     }

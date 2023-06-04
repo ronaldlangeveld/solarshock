@@ -1,6 +1,6 @@
-import GridStatus from "../entities/GridStatus";
-import IGridStatusRepository from "../repositories/IGridStatusRepository";
-import IGridStatusUseCase from "./IGridStatusUseCase";
+import GridStatus from '../entities/GridStatus';
+import IGridStatusRepository from '../repositories/IGridStatusRepository';
+import IGridStatusUseCase from './IGridStatusUseCase';
 
 class GridStatusUseCaseImpl implements IGridStatusUseCase {
     IGridStatusRepository: IGridStatusRepository;
@@ -12,8 +12,8 @@ class GridStatusUseCaseImpl implements IGridStatusUseCase {
     async createGridStatus(gridStatus: GridStatus): Promise<GridStatus> {
         const previousGridStatus = await this.IGridStatusRepository.findByInverterId(gridStatus.inverterId, 1, 'desc');
         
-        if(previousGridStatus !== null && previousGridStatus.length > 0) {
-            if(previousGridStatus[0].gridFrequency === gridStatus.gridFrequency) {
+        if (previousGridStatus !== null && previousGridStatus.length > 0) {
+            if (previousGridStatus[0].gridFrequency === gridStatus.gridFrequency) {
                 throw new Error('Grid status is the same as previous');
             }
         }

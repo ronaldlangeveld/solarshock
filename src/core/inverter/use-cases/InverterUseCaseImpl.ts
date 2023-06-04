@@ -1,6 +1,6 @@
-import IInverterUseCase from "./IInverterUseCase";
-import Inverter from "../entities/Inverter";
-import IInverterRepository from "../repositories/IinverterRepository";
+import IInverterUseCase from './IInverterUseCase';
+import Inverter from '../entities/Inverter';
+import IInverterRepository from '../repositories/IinverterRepository';
 
 class InverterUseCaseImpl implements IInverterUseCase {
     private inverterRepository: IInverterRepository;
@@ -24,7 +24,6 @@ class InverterUseCaseImpl implements IInverterUseCase {
     }
 
     async updateInverter(inverter: Inverter): Promise<Inverter> {
-
         if (inverter.name === '') {
             throw new Error('Inverter name cannot be empty');
         }
@@ -59,7 +58,6 @@ class InverterUseCaseImpl implements IInverterUseCase {
     async findInvertersByAccountId(accountId: string): Promise<Inverter[]> {
         return this.inverterRepository.findByAccountId(accountId);
     }
-
 }
 
 export default InverterUseCaseImpl;

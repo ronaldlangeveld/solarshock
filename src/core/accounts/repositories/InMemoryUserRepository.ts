@@ -1,8 +1,7 @@
-import IUserRepository from "./IUserRepository";
-import User from "../entities/User";
+import IUserRepository from './IUserRepository';
+import User from '../entities/User';
 
 import InMemoryRepository from '../../../infrastructure/InMemoryRepository';
-
 
 class InMemoryUserRepository extends InMemoryRepository<User> implements IUserRepository {
     async create(user: User): Promise<User> {
@@ -24,7 +23,7 @@ class InMemoryUserRepository extends InMemoryRepository<User> implements IUserRe
 
     async findByEmail(email: string): Promise<User | null> {
         const users = await super.findAll();
-        return users.find((user) => user.email === email) || null;
+        return users.find(user => user.email === email) || null;
     }
 
     async findAll(): Promise<User[]> {

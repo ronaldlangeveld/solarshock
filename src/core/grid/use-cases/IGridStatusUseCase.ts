@@ -1,4 +1,4 @@
-import GridStatus from "../entities/GridStatus";
+import GridStatus from '../entities/GridStatus';
 
 interface IGridStatusUseCase {
     createGridStatus(gridStatus: GridStatus): Promise<GridStatus>;

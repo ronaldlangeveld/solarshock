@@ -1,6 +1,6 @@
-import IInverterStatusRepository from "./IInverterStatusRepository";
-import InverterStatus from "../entities/InverterStatus";
-import InMemoryRepository from "../../../infrastructure/InMemoryRepository";
+import IInverterStatusRepository from './IInverterStatusRepository';
+import InverterStatus from '../entities/InverterStatus';
+import InMemoryRepository from '../../../infrastructure/InMemoryRepository';
 
 class InMemoryInverterStatusRepository extends InMemoryRepository<InverterStatus> implements IInverterStatusRepository {
     async create(inverterStatus: InverterStatus): Promise<InverterStatus> {
@@ -15,12 +15,12 @@ class InMemoryInverterStatusRepository extends InMemoryRepository<InverterStatus
         const inverterStatuses = await super.findAll();
 
         if (order === 'desc') {
-            return inverterStatuses.filter((inverterStatus) => inverterStatus.inverterId === inverterId)
+            return inverterStatuses.filter(inverterStatus => inverterStatus.inverterId === inverterId)
                 .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
                 .slice(0, limit);
         }
 
-        return inverterStatuses.filter((inverterStatus) => inverterStatus.inverterId === inverterId)
+        return inverterStatuses.filter(inverterStatus => inverterStatus.inverterId === inverterId)
             .sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime())
             .slice(0, limit);
     }
@@ -28,6 +28,6 @@ class InMemoryInverterStatusRepository extends InMemoryRepository<InverterStatus
     async findAll(): Promise<InverterStatus[]> {
         return super.findAll();
     }
-};
+}
 
 export default InMemoryInverterStatusRepository;

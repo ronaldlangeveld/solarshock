@@ -1,4 +1,4 @@
-import GridStatus from "../entities/GridStatus";
+import GridStatus from '../entities/GridStatus';
 
 interface IGridStatusRepository {
     create(gridStatus: GridStatus): Promise<GridStatus>;

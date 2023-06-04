@@ -5,8 +5,15 @@
         "plugin:ghost/node",
         "eslint:recommended",
         "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:@typescript-eslint/recommended"
+        "plugin:@typescript-eslint/recommended",
+        "plugin:ghost/test"
     ],
+    "rules": {
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": ["error"],
+        "no-shadow": "off",
+        "ghost/ghost-custom/no-native-error": "off"
+    },
     "overrides": [
         {
             "files": ["test/**/*.ts"],

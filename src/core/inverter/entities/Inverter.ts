@@ -59,7 +59,7 @@ class Inverter {
             model: inverter.model,
             serial: inverter.serial,
             maxPower: inverter.maxPower,
-            batteryCapacity: inverter.batteryCapacity,
+            batteryCapacity: inverter.batteryCapacity
         };
     }
 
@@ -74,7 +74,7 @@ class Inverter {
             model: data.model,
             serial: data.serial,
             maxPower: data.maxPower,
-            batteryCapacity: data.batteryCapacity,
+            batteryCapacity: data.batteryCapacity
         };
         return new Inverter(dataset);
     }

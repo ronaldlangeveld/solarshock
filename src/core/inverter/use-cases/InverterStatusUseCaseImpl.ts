@@ -1,7 +1,6 @@
-import InverterStatus from "../entities/InverterStatus";
-import IInverterStatusUseCase from "./IInverterStatusUseCase";
+import InverterStatus from '../entities/InverterStatus';
+import IInverterStatusUseCase from './IInverterStatusUseCase';
 import IInverterStatusRepository from '../repositories/IInverterStatusRepository';
-
 
 class InverterStatusUseCaseImpl implements IInverterStatusUseCase {
     IInverterStatusRepository: IInverterStatusRepository;

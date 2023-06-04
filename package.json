@@ -12,8 +12,7 @@
         "test": "jest",
         "test:types": "tsc --noEmit",
         "lint:code": "eslint src/ --ext .ts --cache",
-        "lint": "yarn lint:code && yarn lint:test",
-        "lint:test": "eslint -c test/.eslintrc.js test/ --ext .ts --cache"
+        "lint": "yarn lint:code"
     },
     "files": [
         "build"

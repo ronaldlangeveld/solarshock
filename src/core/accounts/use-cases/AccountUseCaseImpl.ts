@@ -62,7 +62,6 @@ class AccountUseCaseImpl implements IAccountUseCase {
         }
 
         return this.accountRepository.createBatch(accountsToSave);
-
     }
 }
 
