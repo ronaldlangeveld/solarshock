@@ -18,6 +18,7 @@ export type AuthenticationTokenResponseModel = {
     token: string;
     expiresAt: Date;
     createdAt: Date;
+    isExpired: boolean;
 }
 
 class AuthenticationToken {
@@ -38,10 +39,10 @@ class AuthenticationToken {
     static async create(data: AuthenticationTokenRequestModel): Promise<AuthenticationToken> {
         const token = crypto.randomBytes(64).toString('hex');
         const expiresAt = new Date();
-        expiresAt.setHours(expiresAt.getHours() + 1);
+        expiresAt.setHours(expiresAt.getHours() + 8760); // 1 year
 
         const authenticationToken = new AuthenticationToken({
-            id: '',
+            id: crypto.randomUUID(),
             createdAt: new Date(),
             expiresAt: expiresAt,
             userId: data.userId,
@@ -57,7 +58,8 @@ class AuthenticationToken {
             userId: authenticationToken.userId,
             token: authenticationToken.token,
             expiresAt: authenticationToken.expiresAt,
-            createdAt: authenticationToken.createdAt
+            createdAt: authenticationToken.createdAt,
+            isExpired: authenticationToken.expiresAt < new Date()
         };
     }
 }
