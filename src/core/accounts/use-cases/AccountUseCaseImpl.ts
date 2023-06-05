@@ -14,8 +14,6 @@ class AccountUseCaseImpl implements IAccountUseCase {
             throw new Error('Account name cannot be empty');
         }
 
-        //Check if account name already exists
-
         if (await this.accountRepository.findByName(account.name)) {
             throw new Error('Account name already exists');
         }

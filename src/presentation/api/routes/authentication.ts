@@ -2,30 +2,30 @@ import {Router} from 'express';
 import AccountsController from '../controllers/authentication/AuthenticationController';
 import Server from '../Server';
 import AccountUseCaseImpl from '../../../core/accounts/use-cases/AccountUseCaseImpl';
-// import IAccountRepository from '../../../core/accounts/repositories/IAccountRepository';
 
 class AuthenticationRouter {
-    private router: Router;
-    private accountsController: AccountsController;
-    private serverInstance: Server;
+    private _router: Router;
+    private _serverInstance: Server;
 
     constructor(serverInstance: Server) {
-        this.router = Router();
-        this.serverInstance = serverInstance;
+        this._router = Router();
+        this._serverInstance = serverInstance;
         this.initializeRoutes();
-        this.accountsController = new AccountsController(new AccountUseCaseImpl(this.serverInstance.getAccountRepository()));
     }
 
     private initializeRoutes() {
-        this.router.get('/api/accounts', this.accountsController.getAccounts);
-        this.router.post('/api/accounts', this.accountsController.addAccount);
+        const accountsController = new AccountsController(
+            new AccountUseCaseImpl(this._serverInstance.getAccountRepository())
+        );
+    
+        this._router
+            .get('/api/accounts', accountsController.getAccounts.bind(accountsController))
+            .post('/api/accounts', accountsController.addAccount.bind(accountsController));
     }
 
     public getRouter(): Router {
-        return this.router;
+        return this._router;
     }
 }
-
-// export default new AuthenticationRouter().getRouter();
 
 export default AuthenticationRouter;
