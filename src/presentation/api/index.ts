@@ -4,7 +4,7 @@ import {
     AuthenticationRouter
 } from './routes/index';
 
-import {InMemoryAccountRepository} from '../../infrastructure/data/Memory/InMemoryRepisitories';
+import {InMemoryUserRepository} from '../../infrastructure/data/Memory/InMemoryRepisitories';
 
 class APIServer {
     private app: express.Application;
@@ -16,7 +16,7 @@ class APIServer {
         this.serverInstance = new Server({
             app: this.app,
             port: 3000,
-            accountRepository: new InMemoryAccountRepository()
+            userRepository: new InMemoryUserRepository()
         });
 
         this.setupMiddleware();

@@ -15,7 +15,6 @@ class UserUseCaseImpl implements IUserUseCase {
         }
 
         //Check if user email already exists
-
         if (await this.userRepository.findByEmail(user.email)) {
             throw new Error('User email already exists');
         }

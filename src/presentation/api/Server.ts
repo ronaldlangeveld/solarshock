@@ -1,21 +1,22 @@
 import express from 'express';
-import IAccountRepository from '../../core/accounts/repositories/IAccountRepository';
+// import IAccountRepository from '../../core/accounts/repositories/IAccountRepository';
+import IUserRepository from '../../core/accounts/repositories/IUserRepository';
 
 interface ServerTypes {
     app: express.Application;
     port: number;
-    accountRepository: IAccountRepository;
+    userRepository: IUserRepository;
 }
 
 class Server {
     _app: express.Application;
     _port: number;
-    _accountRepository: IAccountRepository;
+    _userRepository: IUserRepository;
 
     constructor(props: ServerTypes) {
         this._app = props.app;
         this._port = props.port;
-        this._accountRepository = props.accountRepository;
+        this._userRepository = props.userRepository;
     }
 
     start() {
@@ -24,8 +25,12 @@ class Server {
         });
     }
 
-    getAccountRepository(): IAccountRepository {
-        return this._accountRepository;
+    // getAccountRepository(): IAccountRepository {
+    //     return this._userRepository;
+    // }
+
+    getUserRepository(): IUserRepository {
+        return this._userRepository;
     }
 }
 

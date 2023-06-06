@@ -7,7 +7,6 @@ interface IInverterUseCase {
     findInverterById(id: string): Promise<Inverter | null>;
     findInverterByName(name: string): Promise<Inverter | null>;
     findAllInverters(): Promise<Inverter[]>;
-    findInvertersByAccountId(accountId: string): Promise<Inverter[]>;
 }
 
 export default IInverterUseCase;

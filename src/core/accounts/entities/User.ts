@@ -22,7 +22,6 @@ export type UserEntityTypes = {
     lastName: string;
     role: UserRoles;
     status: UserStatus;
-    accountId: string;
 }
 
 export type UserRequestModel = {
@@ -32,7 +31,6 @@ export type UserRequestModel = {
     lastName: string;
     role: UserRoles;
     status: UserStatus;
-    accountId: string;
 }
 
 export type UserResponseModel = {
@@ -42,7 +40,6 @@ export type UserResponseModel = {
     lastName: string;
     role: UserRoles;
     status: UserStatus;
-    accountId: string;
     createdAt: Date;
     updatedAt: Date;
 }
@@ -57,7 +54,6 @@ class User {
     lastName: string;
     role: UserRoles;
     status: UserStatus;
-    accountId: string;
 
     constructor(data: UserEntityTypes) {
         this.id = data.id;
@@ -69,7 +65,6 @@ class User {
         this.lastName = data.lastName;
         this.role = data.role;
         this.status = data.status;
-        this.accountId = data.accountId;
     }
 
     toJson(user: User): UserResponseModel {
@@ -81,7 +76,6 @@ class User {
             firstName: user.firstName,
             lastName: user.lastName,
             role: user.role,
-            accountId: user.accountId,
             status: user.status
         };
     }
@@ -101,7 +95,6 @@ class User {
             firstName: data.firstName,
             lastName: data.lastName,
             role: data.role,
-            accountId: data.accountId,
             status: data.status
         };
         return new User(

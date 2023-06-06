@@ -1,4 +1,4 @@
-import AuthenticationRouter from './authentication';
+import AuthenticationRouter from './AuthenticationRouter';
 
 export {
     AuthenticationRouter

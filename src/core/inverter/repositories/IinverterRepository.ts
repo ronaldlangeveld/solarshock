@@ -6,7 +6,6 @@ interface IInverterRepository {
     delete(inverter: Inverter): Promise<Inverter>;
     findById(id: string): Promise<Inverter | null>;
     findByName(name: string): Promise<Inverter | null>;
-    findByAccountId(accountId: string): Promise<Inverter[]>;
     findAll(): Promise<Inverter[]>;
 }
 

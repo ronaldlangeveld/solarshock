@@ -37,7 +37,6 @@ describe('User Entity', function () {
         expect(userJson).toHaveProperty('firstName');
         expect(userJson).toHaveProperty('lastName');
         expect(userJson).toHaveProperty('role');
-        expect(userJson).toHaveProperty('accountId');
     });
 
     it('should hash the password', async function () {

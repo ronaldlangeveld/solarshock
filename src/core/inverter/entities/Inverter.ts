@@ -5,7 +5,6 @@ type InverterEntityTypes = {
     createdAt: Date;
     updatedAt: Date;
     name: string;
-    accountId: string;
     brand: string | null;
     model: string | null;
     serial: string | null;
@@ -15,7 +14,6 @@ type InverterEntityTypes = {
 
 type InverterRequestModel = {
     name: string;
-    accountId: string;
     brand: string | null;
     model: string | null;
     serial: string | null;
@@ -28,7 +26,6 @@ class Inverter {
     createdAt: Date;
     updatedAt: Date;
     name: string;
-    accountId: string;
     brand: string | null;
     model: string | null;
     serial: string | null;
@@ -40,7 +37,6 @@ class Inverter {
         this.createdAt = data.createdAt;
         this.updatedAt = data.updatedAt;
         this.name = data.name;
-        this.accountId = data.accountId;
         this.brand = data.brand;
         this.model = data.model;
         this.serial = data.serial;
@@ -54,7 +50,6 @@ class Inverter {
             createdAt: inverter.createdAt,
             updatedAt: inverter.updatedAt,
             name: inverter.name,
-            accountId: inverter.accountId,
             brand: inverter.brand,
             model: inverter.model,
             serial: inverter.serial,
@@ -69,7 +64,6 @@ class Inverter {
             createdAt: new Date(),
             updatedAt: new Date(),
             name: data.name,
-            accountId: data.accountId,
             brand: data.brand,
             model: data.model,
             serial: data.serial,

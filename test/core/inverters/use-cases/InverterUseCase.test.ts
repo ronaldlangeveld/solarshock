@@ -208,44 +208,6 @@ describe('InverterUseCaseImpl', function () {
         expect(foundInverter).toBeInstanceOf(Inverter);
     });
 
-    it('should find inverters by account id', async function () {
-        const dataset = {
-            name: 'Home Inverter',
-            accountId: '1',
-            brand: 'Tesla',
-            model: 'Powerwall 3',
-            serial: 'unique_serial',
-            maxPower: 7000,
-            batteryCapacity: 5200
-        };
-
-        const dataset2 = {
-            name: 'Home Inverter 2',
-            accountId: '2',
-            brand: 'Tesla',
-            model: 'Powerwall 3',
-            serial: 'unique_serial421',
-            maxPower: 7000,
-            batteryCapacity: 5200
-        };
-
-        const inverter = await Inverter.create(dataset);
-
-        const inverter2 = await Inverter.create(dataset2);
-
-        const createdInverter = await inverterUseCase.createInverter(inverter);
-
-        const createdInverter2 = await inverterUseCase.createInverter(inverter2);
-
-        expect(createdInverter).toBeInstanceOf(Inverter);
-
-        expect(createdInverter2).toBeInstanceOf(Inverter);
-
-        const foundInverters = await inverterUseCase.findInvertersByAccountId(createdInverter.accountId);
-
-        expect(foundInverters.length).toBe(1);
-    });
-
     it('should find all inverters', async function () {
         const dataset = {
             name: 'Home Inverter',

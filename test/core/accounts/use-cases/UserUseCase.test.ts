@@ -18,8 +18,7 @@ describe('User Use Case', function () {
                 firstName: 'Dobby',
                 lastName: 'The House Elf',
                 role: UserRoles.USER,
-                status: UserStatus.ACTIVE,
-                accountId: '1'
+                status: UserStatus.ACTIVE
             });
 
             const createdUser = await userUseCase.createUser(user);
@@ -38,8 +37,7 @@ describe('User Use Case', function () {
                 firstName: 'Dobby',
                 lastName: 'The House Elf',
                 role: UserRoles.USER,
-                status: UserStatus.ACTIVE,
-                accountId: '1'
+                status: UserStatus.ACTIVE
             });
 
             await userUseCase.createUser(user);
@@ -54,8 +52,7 @@ describe('User Use Case', function () {
                 firstName: 'Dobby',
                 lastName: 'The House Elf',
                 role: UserRoles.USER,
-                status: UserStatus.ACTIVE,
-                accountId: '1'
+                status: UserStatus.ACTIVE
             });
 
             await expect(userUseCase.createUser(user)).rejects.toThrowError();
@@ -68,8 +65,7 @@ describe('User Use Case', function () {
                 firstName: 'Dobby',
                 lastName: 'The House Elf',
                 role: UserRoles.USER,
-                status: UserStatus.ACTIVE,
-                accountId: '1'
+                status: UserStatus.ACTIVE
             });
 
             const createdUser = await userUseCase.createUser(user);
@@ -118,8 +114,7 @@ describe('User Use Case', function () {
                 firstName: 'Dobby',
                 lastName: 'The House Elf',
                 role: UserRoles.USER,
-                status: UserStatus.ACTIVE,
-                accountId: '1'
+                status: UserStatus.ACTIVE
             });
 
             const createdUser = await userUseCase.createUser(user);
@@ -148,8 +143,7 @@ describe('User Use Case', function () {
                 firstName: 'Dobby',
                 lastName: 'The House Elf',
                 role: UserRoles.USER,
-                status: UserStatus.ACTIVE,
-                accountId: '1'
+                status: UserStatus.ACTIVE
             });
 
             const createdUser = await userUseCase.createUser(user);
@@ -168,8 +162,7 @@ describe('User Use Case', function () {
                 firstName: 'Dobby',
                 lastName: 'The House Elf',
                 role: UserRoles.USER,
-                status: UserStatus.ACTIVE,
-                accountId: '1'
+                status: UserStatus.ACTIVE
             });
 
             const user2 = await User.create({
@@ -178,8 +171,7 @@ describe('User Use Case', function () {
                 firstName: 'Rubeus',
                 lastName: 'Hagrid',
                 role: UserRoles.USER,
-                status: UserStatus.ACTIVE,
-                accountId: '1'
+                status: UserStatus.ACTIVE
             });
 
             const users = [user, user2];
@@ -198,8 +190,7 @@ describe('User Use Case', function () {
                 firstName: 'Dobby',
                 lastName: 'The House Elf',
                 role: UserRoles.USER,
-                status: UserStatus.ACTIVE,
-                accountId: '1'
+                status: UserStatus.ACTIVE
             });
 
             const user2 = await User.create({
@@ -208,8 +199,7 @@ describe('User Use Case', function () {
                 firstName: 'Dobby',
                 lastName: 'The House Elf',
                 role: UserRoles.USER,
-                status: UserStatus.ACTIVE,
-                accountId: '1'
+                status: UserStatus.ACTIVE
             });
 
             const users = [user, user2];
@@ -224,8 +214,7 @@ describe('User Use Case', function () {
                 firstName: 'Dobby',
                 lastName: 'The House Elf',
                 role: UserRoles.USER,
-                status: UserStatus.ACTIVE,
-                accountId: '1'
+                status: UserStatus.ACTIVE
             });
 
             const user2 = await User.create({
@@ -234,8 +223,7 @@ describe('User Use Case', function () {
                 firstName: 'Tom',
                 lastName: 'Riddle',
                 role: UserRoles.USER,
-                status: UserStatus.BANNED,
-                accountId: '1'
+                status: UserStatus.BANNED
             });
 
             const users = [user, user2];
@@ -250,8 +238,7 @@ describe('User Use Case', function () {
                 firstName: 'Dobby',
                 lastName: 'The House Elf',
                 role: UserRoles.USER,
-                status: UserStatus.ACTIVE,
-                accountId: '1'
+                status: UserStatus.ACTIVE
             });
 
             const user2 = await User.create({
@@ -260,8 +247,7 @@ describe('User Use Case', function () {
                 firstName: 'Rubeus',
                 lastName: 'Hagrid',
                 role: UserRoles.ADMIN,
-                status: UserStatus.ACTIVE,
-                accountId: '1'
+                status: UserStatus.ACTIVE
             });
 
             const users = [user, user2];
@@ -281,8 +267,7 @@ describe('User Use Case', function () {
                 firstName: 'Dobby',
                 lastName: 'The House Elf',
                 role: UserRoles.USER,
-                status: UserStatus.ACTIVE,
-                accountId: '1'
+                status: UserStatus.ACTIVE
             });
 
             const user2 = await User.create({
@@ -291,8 +276,7 @@ describe('User Use Case', function () {
                 firstName: 'Rubeus',
                 lastName: 'Hagrid',
                 role: UserRoles.ADMIN,
-                status: UserStatus.ACTIVE,
-                accountId: '1'
+                status: UserStatus.ACTIVE
             });
 
             const users = [user, user2];

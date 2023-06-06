@@ -35,7 +35,6 @@ describe('Inverter Entity', function () {
         expect(inverterJson).toHaveProperty('createdAt');
         expect(inverterJson).toHaveProperty('updatedAt');
         expect(inverterJson).toHaveProperty('name');
-        expect(inverterJson).toHaveProperty('accountId');
         expect(inverterJson).toHaveProperty('brand');
         expect(inverterJson).toHaveProperty('model');
         expect(inverterJson).toHaveProperty('serial');

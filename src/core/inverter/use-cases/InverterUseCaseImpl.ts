@@ -54,10 +54,6 @@ class InverterUseCaseImpl implements IInverterUseCase {
     async findAllInverters(): Promise<Inverter[]> {
         return this.inverterRepository.findAll();
     }
-
-    async findInvertersByAccountId(accountId: string): Promise<Inverter[]> {
-        return this.inverterRepository.findByAccountId(accountId);
-    }
 }
 
 export default InverterUseCaseImpl;

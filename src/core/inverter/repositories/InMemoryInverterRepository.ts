@@ -24,12 +24,7 @@ class InMemoryInverterRepository extends InMemoryRepository<Inverter> implements
         const inverters = await super.findAll();
         return inverters.find(inverter => inverter.name === name) || null;
     }
-
-    async findByAccountId(accountId: string): Promise<Inverter[]> {
-        const inverters = await super.findAll();
-        return inverters.filter(inverter => inverter.accountId === accountId);
-    }
-
+    
     async findAll(): Promise<Inverter[]> {
         return super.findAll();
     }
