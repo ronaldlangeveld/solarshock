@@ -53,4 +53,32 @@ describe('User Entity', function () {
         const user = await User.create(dataset);
         expect(user.password).not.toBe(dataset.password);
     });
+
+    it('should throw if the password is blank', async function () {
+        const dataset = {
+            email: 'sashi@dog.com',
+            password: '',
+            firstName: 'sashi',
+            lastName: 'langeveld',
+            role: UserRoles.USER,
+            status: UserStatus.ACTIVE,
+            accountId: '1'
+        };
+
+        await expect(User.create(dataset)).rejects.toThrow();
+    });
+
+    it('should throw if the email is blank', async function () {
+        const dataset = {
+            email: '',
+            password: 'sausagesRuleTheWorld',
+            firstName: 'sashi',
+            lastName: 'langeveld',
+            role: UserRoles.USER,
+            status: UserStatus.ACTIVE,
+            accountId: '1'
+        };
+
+        await expect(User.create(dataset)).rejects.toThrow();
+    });
 });

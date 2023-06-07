@@ -45,19 +45,6 @@ describe('User Use Case', function () {
             await expect(userUseCase.createUser(user)).rejects.toThrowError();
         });
 
-        it('should throw an error if user email is empty', async function () {
-            const user = await User.create({
-                email: '',
-                password: 'socksislife1992',
-                firstName: 'Dobby',
-                lastName: 'The House Elf',
-                role: UserRoles.USER,
-                status: UserStatus.ACTIVE
-            });
-
-            await expect(userUseCase.createUser(user)).rejects.toThrowError();
-        });
-
         it('should update user properties', async function () {
             const user = await User.create({
                 email: 'dobby@hogwarts.co.uk',
@@ -207,7 +194,7 @@ describe('User Use Case', function () {
             await expect(userUseCase.createBatchUsers(users)).rejects.toThrowError();
         });
 
-        it('should error if email is blank in saving batch', async function () {
+        it('should error if another user email exists when updating user email', async function () {
             const user = await User.create({
                 email: 'dobby@hogwarts.co.uk',
                 password: 'socksislife1992',
@@ -218,17 +205,22 @@ describe('User Use Case', function () {
             });
 
             const user2 = await User.create({
-                email: '',
-                password: 'tmriddle',
-                firstName: 'Tom',
-                lastName: 'Riddle',
+                email: 'harry@hogwarts.co.uk',
+                password: 'iloveMybroomstickGoGryffindor',
+                firstName: 'Harry',
+                lastName: 'Potter',
                 role: UserRoles.USER,
-                status: UserStatus.BANNED
+                status: UserStatus.ACTIVE
             });
 
-            const users = [user, user2];
+            const dobbyAccount = await userUseCase.createUser(user);
+            await userUseCase.createUser(user2);
 
-            await expect(userUseCase.createBatchUsers(users)).rejects.toThrowError();
+            // dobbyAccount.email = 'harry@hogwarts.co.uk';
+
+            const dobbyInstance = new User(dobbyAccount);
+            dobbyInstance.email = 'harry@hogwarts.co.uk';
+            await expect(userUseCase.updateUser(dobbyInstance)).rejects.toThrowError('User email already exists');
         });
 
         it('should find all users', async function () {

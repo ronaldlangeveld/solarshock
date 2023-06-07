@@ -85,6 +85,16 @@ class User {
     }
 
     static async create(data: UserRequestModel): Promise<User> {
+        // we need to make sure they have a password
+        if (!data.password || data.password === '') {
+            throw new Error('Password cannot be empty');
+        }
+
+        // we need to make sure they have an email
+        if (!data.email || data.email === '') {
+            throw new Error('Email cannot be empty');
+        }
+
         const hashedPassword = await bcrypt.hash(data.password, 10);
         const dataset = {
             id: crypto.randomUUID(),

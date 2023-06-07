@@ -21,7 +21,8 @@ class AuthenticationRouter {
     
         this._router
             .get('/api/users', accountsController.getUsers.bind(accountsController))
-            .post('/api/users', accountsController.addUser.bind(accountsController));
+            .post('/api/users', accountsController.addUser.bind(accountsController))
+            .put('/api/users/:userId', accountsController.updateUser.bind(accountsController));
     }
 
     public getRouter(): Router {

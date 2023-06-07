@@ -1,5 +1,5 @@
 import IUserRepository from '../repositories/IUserRepository';
-import User from '../entities/User';
+import User, {UserRoles, UserStatus} from '../entities/User';
 import IUserUseCase from './IUserUseCase';
 
 class UserUseCaseImpl implements IUserUseCase {
@@ -10,19 +10,31 @@ class UserUseCaseImpl implements IUserUseCase {
     }
 
     async createUser(user: User): Promise<User> {
-        if (user.email === '') {
-            throw new Error('User email cannot be empty');
-        }
-
         //Check if user email already exists
         if (await this.userRepository.findByEmail(user.email)) {
             throw new Error('User email already exists');
         }
 
+        // if this is the first user, make them an admin else default to user
+        if ((await this.userRepository.findAll()).length === 0) {
+            user.role = UserRoles.ADMIN;
+        } else {
+            user.role = UserRoles.USER;
+        }
+
+        // by default we are going to make the user inactive
+        // they will need to verify their email address
+
+        user.status = UserStatus.INACTIVE;
+
         return this.userRepository.create(user);
     }
 
     async updateUser(user: User): Promise<User> {
+        const existingUser = await this.findUserByEmail(user.email);
+        if (existingUser && existingUser.id !== user.id) {
+            throw Error('User email already exists');
+        }
         return this.userRepository.update(user);
     }
 
@@ -53,11 +65,6 @@ class UserUseCaseImpl implements IUserUseCase {
             if (await this.userRepository.findByEmail(user.email)) {
                 throw new Error('User email already exists');
             }
-
-            if (user.email === '') {
-                throw new Error('User email cannot be empty');
-            }
-
             usersToSave.push(await this.createUser(user));
         }
 
