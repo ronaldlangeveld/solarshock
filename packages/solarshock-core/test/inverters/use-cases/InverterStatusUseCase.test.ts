@@ -1,13 +1,13 @@
 import InverterStatus from '../../../src/inverter/entities/InverterStatus';
-import InverterStatusUseCaseImpl from '../../../src/inverter/use-cases/InverterStatusUseCaseImpl';
-import IInverterStatusUseCase from '../../../src/inverter/use-cases/IInverterStatusUseCase';
+import InverterStatusServiceImpl from '../../../src/inverter/services/InverterStatusServiceImpl';
+import IInverterStatusService from '../../../src/inverter/services/IInverterStatusService';
 import InMemoryInverterStatusRepository from '../../../src/inverter/repositories/InMemoryInverterStatusRepository';
 
 describe('Inverter Status Use Case', function () {
-    let inverterStatusUseCase: IInverterStatusUseCase;
+    let inverterStatusUseCase: IInverterStatusService;
 
     beforeEach(function () {
-        inverterStatusUseCase = new InverterStatusUseCaseImpl(new InMemoryInverterStatusRepository());
+        inverterStatusUseCase = new InverterStatusServiceImpl(new InMemoryInverterStatusRepository());
     });
 
     afterEach(function () {

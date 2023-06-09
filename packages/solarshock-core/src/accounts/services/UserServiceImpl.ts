@@ -1,8 +1,8 @@
 import IUserRepository from '../repositories/IUserRepository';
 import User, {UserRoles, UserStatus} from '../entities/User';
-import IUserUseCase from './IUserUseCase';
+import IUserService from './IUserService';
 
-class UserUseCaseImpl implements IUserUseCase {
+class UserServiceImpl implements IUserService {
     private userRepository: IUserRepository;
 
     constructor(userRepository: IUserRepository) {
@@ -72,4 +72,4 @@ class UserUseCaseImpl implements IUserUseCase {
     }
 }
 
-export default UserUseCaseImpl;
+export default UserServiceImpl;

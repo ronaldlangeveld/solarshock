@@ -1,8 +1,8 @@
 import GridStatus from '../entities/GridStatus';
 import IGridStatusRepository from '../repositories/IGridStatusRepository';
-import IGridStatusUseCase from './IGridStatusUseCase';
+import IGridStatusService from './IGridStatusService';
 
-class GridStatusUseCaseImpl implements IGridStatusUseCase {
+class GridStatusService implements IGridStatusService {
     IGridStatusRepository: IGridStatusRepository;
 
     constructor(IGridStatusRepository: IGridStatusRepository) {
@@ -33,4 +33,4 @@ class GridStatusUseCaseImpl implements IGridStatusUseCase {
     }
 }
 
-export default GridStatusUseCaseImpl;
+export default GridStatusService;

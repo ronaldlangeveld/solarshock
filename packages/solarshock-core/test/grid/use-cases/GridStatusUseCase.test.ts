@@ -1,13 +1,13 @@
 import GridStatus from '../../../src/grid/entities/GridStatus';
-import GridStatusUseCaseImpl from '../../../src/grid/use-cases/GridStatusUseCaseImpl';
-import IGridStatusUseCase from '../../../src/grid/use-cases/IGridStatusUseCase';
+import GridStatusServiceImpl from '../../../src/grid/services/GridStatusServiceImpl';
+import IGridStatusService from '../../../src/grid/services/IGridStatusService';
 import InMemoryGridStatusRepository from '../../../src/grid/repositories/InMemoryGridStatusRepository';
 
 describe('Grid Status Use Case', function () {
-    let gridStatusUseCase: IGridStatusUseCase;
+    let gridStatusUseCase: IGridStatusService;
 
     beforeEach(function () {
-        gridStatusUseCase = new GridStatusUseCaseImpl(new InMemoryGridStatusRepository());
+        gridStatusUseCase = new GridStatusServiceImpl(new InMemoryGridStatusRepository());
     });
 
     afterEach(function () {

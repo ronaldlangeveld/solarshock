@@ -1,8 +1,8 @@
 import InverterStatus from '../entities/InverterStatus';
-import IInverterStatusUseCase from './IInverterStatusUseCase';
 import IInverterStatusRepository from '../repositories/IInverterStatusRepository';
+import IInverterStatusService from './IInverterStatusService';
 
-class InverterStatusUseCaseImpl implements IInverterStatusUseCase {
+class InverterStatusServiceImpl implements IInverterStatusService {
     IInverterStatusRepository: IInverterStatusRepository;
 
     constructor(IInverterStatusRepository: IInverterStatusRepository) {
@@ -26,4 +26,4 @@ class InverterStatusUseCaseImpl implements IInverterStatusUseCase {
     }
 }
 
-export default InverterStatusUseCaseImpl;
+export default InverterStatusServiceImpl;

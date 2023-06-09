@@ -1,13 +1,17 @@
 import Inverter from '../../../src/inverter/entities/Inverter';
-import InverterUseCaseImpl from '../../../src/inverter/use-cases/InverterUseCaseImpl';
-import IInverterUseCase from '../../../src/inverter/use-cases/IInverterUseCase';
+// import InverterUseCaseImpl from '../../../src/inverter/use-cases/InverterUseCaseImpl';
+// import IInverterUseCase from '../../../src/inverter/use-cases/IInverterUseCase';
 import InMemoryInverterRepository from '../../../src/inverter/repositories/InMemoryInverterRepository';
+// import InverterStatusServiceImpl from '../../../src/inverter/services/InverterStatusServiceImpl';
+// import IInverterService from '../../../src/inverter/services/IInverterService';
+import IInverterService from '../../../src/inverter/services/IInverterService';
+import InverterServiceImpl from '../../../src/inverter/services/InverterServiceImpl';
 
 describe('InverterUseCaseImpl', function () {
-    let inverterUseCase: IInverterUseCase;
+    let inverterUseCase: IInverterService;
 
     beforeEach(function () {
-        inverterUseCase = new InverterUseCaseImpl(new InMemoryInverterRepository());
+        inverterUseCase = new InverterServiceImpl(new InMemoryInverterRepository());
     });
 
     it('should create an inverter', async function () {

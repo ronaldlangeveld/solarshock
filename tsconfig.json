@@ -8,10 +8,7 @@
             ],
             "@solarshock/solarshock-core/*": [
                 "solarshock-core/src/*"
-            ],
-            "@solarshock/notifications/*": [
-                "notifications/src/*"
-            ],
+            ]
         }
     },
     "files": [],
@@ -21,9 +18,6 @@
         },
         {
             "path": "packages/solarshock-core",
-        },
-        {
-            "path": "packages/notifications",
         }
     ]
 }

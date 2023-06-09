@@ -1,8 +1,8 @@
-import IInverterUseCase from './IInverterUseCase';
+import IInverterService from './IInverterService';
 import Inverter from '../entities/Inverter';
 import IInverterRepository from '../repositories/IinverterRepository';
 
-class InverterUseCaseImpl implements IInverterUseCase {
+class InverterServiceImpl implements IInverterService {
     private inverterRepository: IInverterRepository;
 
     constructor(inverterRepository: IInverterRepository) {
@@ -56,4 +56,4 @@ class InverterUseCaseImpl implements IInverterUseCase {
     }
 }
 
-export default InverterUseCaseImpl;
+export default InverterServiceImpl;
