@@ -1,6 +1,6 @@
-import Inverter from '../entities/Inverter';
+import {Inverter} from '../entities/Inverter';
 
-interface IInverterService {
+export interface IInverterService {
     createInverter(inverter: Inverter): Promise<Inverter>;
     updateInverter(inverter: Inverter): Promise<Inverter>;
     deleteInverter(inverter: Inverter): Promise<Inverter>;
@@ -8,5 +8,3 @@ interface IInverterService {
     findInverterByName(name: string): Promise<Inverter | null>;
     findAllInverters(): Promise<Inverter[]>;
 }
-
-export default IInverterService;

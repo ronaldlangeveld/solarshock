@@ -1,8 +1,8 @@
-import IUserRepository from '../repositories/IUserRepository';
-import User, {UserRoles, UserStatus} from '../entities/User';
-import IUserService from './IUserService';
+import {IUserRepository} from '../repositories/IUserRepository';
+import {User, UserRoles, UserStatus} from '../entities/User';
+import {IUserService} from './IUserService';
 
-class UserServiceImpl implements IUserService {
+export class UserServiceImpl implements IUserService {
     private userRepository: IUserRepository;
 
     constructor(userRepository: IUserRepository) {
@@ -71,5 +71,3 @@ class UserServiceImpl implements IUserService {
         return this.userRepository.createBatch(usersToSave);
     }
 }
-
-export default UserServiceImpl;

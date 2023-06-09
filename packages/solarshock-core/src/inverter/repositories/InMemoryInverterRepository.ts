@@ -1,8 +1,8 @@
 import {InMemoryRepository} from '@solarshock/in-memory-repository';
-import IInverterRepository from './IinverterRepository';
-import Inverter from '../entities/Inverter';
+import {IInverterRepository} from './IinverterRepository';
+import {Inverter} from '../entities/Inverter';
 
-class InMemoryInverterRepository extends InMemoryRepository<Inverter> implements IInverterRepository {
+export class InMemoryInverterRepository extends InMemoryRepository<Inverter> implements IInverterRepository {
     async create(inverter: Inverter): Promise<Inverter> {
         return super.save(inverter);
     }
@@ -29,5 +29,3 @@ class InMemoryInverterRepository extends InMemoryRepository<Inverter> implements
         return super.findAll();
     }
 }
-
-export default InMemoryInverterRepository;

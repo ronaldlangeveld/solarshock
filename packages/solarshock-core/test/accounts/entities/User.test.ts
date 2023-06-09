@@ -1,4 +1,4 @@
-import User, {UserRoles, UserStatus} from '../../../src/accounts/entities/User';
+import {User, UserRoles, UserStatus} from '../../../src/accounts/entities/User';
 
 describe('User Entity', function () {
     it('should create an User entity', async function () {

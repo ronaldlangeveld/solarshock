@@ -1,8 +1,8 @@
-import IUserRepository from './IUserRepository';
-import User from '../entities/User';
+import {IUserRepository} from './IUserRepository';
+import {User} from '../entities/User';
 import {InMemoryRepository} from '@solarshock/in-memory-repository';
 
-class InMemoryUserRepository extends InMemoryRepository<User> implements IUserRepository {
+export class InMemoryUserRepository extends InMemoryRepository<User> implements IUserRepository {
     async create(user: User): Promise<User> {
         return super.save(user);
     }
@@ -38,4 +38,3 @@ class InMemoryUserRepository extends InMemoryRepository<User> implements IUserRe
     }
 }
 
-export default InMemoryUserRepository;

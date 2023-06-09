@@ -21,7 +21,7 @@ type InverterRequestModel = {
     batteryCapacity: number | null;
 }
 
-class Inverter {
+export class Inverter {
     id: string;
     createdAt: Date;
     updatedAt: Date;
@@ -73,5 +73,3 @@ class Inverter {
         return new Inverter(dataset);
     }
 }
-
-export default Inverter;

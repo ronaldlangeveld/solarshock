@@ -1,11 +1,7 @@
-import Inverter from '../../../src/inverter/entities/Inverter';
-// import InverterUseCaseImpl from '../../../src/inverter/use-cases/InverterUseCaseImpl';
-// import IInverterUseCase from '../../../src/inverter/use-cases/IInverterUseCase';
-import InMemoryInverterRepository from '../../../src/inverter/repositories/InMemoryInverterRepository';
-// import InverterStatusServiceImpl from '../../../src/inverter/services/InverterStatusServiceImpl';
-// import IInverterService from '../../../src/inverter/services/IInverterService';
-import IInverterService from '../../../src/inverter/services/IInverterService';
-import InverterServiceImpl from '../../../src/inverter/services/InverterServiceImpl';
+import {Inverter} from '../../../src/inverter/entities/Inverter';
+import {InMemoryInverterRepository} from '../../../src/inverter/repositories/InMemoryInverterRepository';
+import {IInverterService} from '../../../src/inverter/services/IInverterService';
+import {InverterServiceImpl} from '../../../src/inverter/services/InverterServiceImpl';
 
 describe('InverterUseCaseImpl', function () {
     let inverterUseCase: IInverterService;

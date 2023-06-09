@@ -1,4 +1,4 @@
-import GridStatus from '../../../src/grid/entities/GridStatus';
+import {GridStatus} from '../../../src/grid/entities/GridStatus';
 
 describe('Grid Status Entity', function () {
     it('should create a grid status entity', async function () {

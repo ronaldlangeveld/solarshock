@@ -1,8 +1,8 @@
 import {InMemoryRepository} from '@solarshock/in-memory-repository';
-import IGridStatusRepository from './IGridStatusRepository';
-import GridStatus from '../entities/GridStatus';
+import {IGridStatusRepository} from './IGridStatusRepository';
+import {GridStatus} from '../entities/GridStatus';
 
-class InMemoryGridStatusRepository extends InMemoryRepository<GridStatus> implements IGridStatusRepository {
+export class InMemoryGridStatusRepository extends InMemoryRepository<GridStatus> implements IGridStatusRepository {
     async create(gridStatus: GridStatus): Promise<GridStatus> {
         return super.save(gridStatus);
     }
@@ -29,5 +29,3 @@ class InMemoryGridStatusRepository extends InMemoryRepository<GridStatus> implem
         return super.findAll();
     }
 }
-
-export default InMemoryGridStatusRepository;

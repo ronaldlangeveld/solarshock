@@ -1,6 +1,6 @@
-import User from '../entities/User';
+import {User} from '../entities/User';
 
-interface IUserService {
+export interface IUserService {
     createUser(user: User): Promise<User>;
     updateUser(user: User): Promise<User>;
     deleteUser(user: User): Promise<User>;
@@ -10,4 +10,3 @@ interface IUserService {
     createBatchUsers(users: User[]): Promise<User[]>;
 }
 
-export default IUserService;

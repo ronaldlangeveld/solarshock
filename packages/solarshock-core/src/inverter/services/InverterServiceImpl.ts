@@ -1,8 +1,8 @@
-import IInverterService from './IInverterService';
-import Inverter from '../entities/Inverter';
-import IInverterRepository from '../repositories/IinverterRepository';
+import {IInverterService} from './IInverterService';
+import {Inverter} from '../entities/Inverter';
+import {IInverterRepository} from '../repositories/IinverterRepository';
 
-class InverterServiceImpl implements IInverterService {
+export class InverterServiceImpl implements IInverterService {
     private inverterRepository: IInverterRepository;
 
     constructor(inverterRepository: IInverterRepository) {
@@ -55,5 +55,3 @@ class InverterServiceImpl implements IInverterService {
         return this.inverterRepository.findAll();
     }
 }
-
-export default InverterServiceImpl;

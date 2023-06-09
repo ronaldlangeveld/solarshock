@@ -1,7 +1,7 @@
-import User, {UserRoles, UserStatus} from '../../../src/accounts/entities/User';
-import IUserService from '../../../src/accounts/services/IUserService';
-import InMemoryUserRepository from '../../../src/accounts/repositories/InMemoryUserRepository';
-import UserServiceImpl from '../../../src/accounts/services/UserServiceImpl';
+import {User, UserRoles, UserStatus} from '../../../src/accounts/entities/User';
+import {IUserService} from '../../../src/accounts/services/IUserService';
+import {InMemoryUserRepository} from '../../../src/accounts/repositories/InMemoryUserRepository';
+import {UserServiceImpl} from '../../../src/accounts/services/UserServiceImpl';
 
 describe('User Use Case', function () {
     let userUseCase: IUserService;

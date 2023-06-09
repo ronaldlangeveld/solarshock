@@ -1,7 +1,7 @@
-import InverterStatus from '../../../src/inverter/entities/InverterStatus';
-import InverterStatusServiceImpl from '../../../src/inverter/services/InverterStatusServiceImpl';
-import IInverterStatusService from '../../../src/inverter/services/IInverterStatusService';
-import InMemoryInverterStatusRepository from '../../../src/inverter/repositories/InMemoryInverterStatusRepository';
+import {InverterStatus} from '../../../src/inverter/entities/InverterStatus';
+import {InverterStatusServiceImpl} from '../../../src/inverter/services/InverterStatusServiceImpl';
+import {IInverterStatusService} from '../../../src/inverter/services/IInverterStatusService';
+import {InMemoryInverterStatusRepository} from '../../../src/inverter/repositories/InMemoryInverterStatusRepository';
 
 describe('Inverter Status Use Case', function () {
     let inverterStatusUseCase: IInverterStatusService;

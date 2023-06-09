@@ -1,8 +1,8 @@
-import GridStatus from '../entities/GridStatus';
-import IGridStatusRepository from '../repositories/IGridStatusRepository';
-import IGridStatusService from './IGridStatusService';
+import {GridStatus} from '../entities/GridStatus';
+import {IGridStatusRepository} from '../repositories/IGridStatusRepository';
+import {IGridStatusService} from './IGridStatusService';
 
-class GridStatusService implements IGridStatusService {
+export class GridStatusServiceImpl implements IGridStatusService {
     IGridStatusRepository: IGridStatusRepository;
 
     constructor(IGridStatusRepository: IGridStatusRepository) {
@@ -32,5 +32,3 @@ class GridStatusService implements IGridStatusService {
         return this.IGridStatusRepository.findAll();
     }
 }
-
-export default GridStatusService;

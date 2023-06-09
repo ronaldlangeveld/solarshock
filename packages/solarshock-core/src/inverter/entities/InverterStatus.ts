@@ -16,7 +16,7 @@ export type InverterStatusRequestModel = {
     currentProduction: number;
 }
 
-class InverterStatus {
+export class InverterStatus {
     id: string;
     createdAt: Date;
     inverterId: string;
@@ -57,5 +57,3 @@ class InverterStatus {
         return new InverterStatus(dataset);
     }
 }
-
-export default InverterStatus;

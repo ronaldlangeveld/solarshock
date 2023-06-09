@@ -1,8 +1,8 @@
-import InverterStatus from '../entities/InverterStatus';
-import IInverterStatusRepository from '../repositories/IInverterStatusRepository';
-import IInverterStatusService from './IInverterStatusService';
+import {InverterStatus} from '../entities/InverterStatus';
+import {IInverterStatusRepository} from '../repositories/IInverterStatusRepository';
+import {IInverterStatusService} from './IInverterStatusService';
 
-class InverterStatusServiceImpl implements IInverterStatusService {
+export class InverterStatusServiceImpl implements IInverterStatusService {
     IInverterStatusRepository: IInverterStatusRepository;
 
     constructor(IInverterStatusRepository: IInverterStatusRepository) {
@@ -25,5 +25,3 @@ class InverterStatusServiceImpl implements IInverterStatusService {
         return this.IInverterStatusRepository.findAll();
     }
 }
-
-export default InverterStatusServiceImpl;

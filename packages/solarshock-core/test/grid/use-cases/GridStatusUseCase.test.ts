@@ -1,7 +1,7 @@
-import GridStatus from '../../../src/grid/entities/GridStatus';
-import GridStatusServiceImpl from '../../../src/grid/services/GridStatusServiceImpl';
-import IGridStatusService from '../../../src/grid/services/IGridStatusService';
-import InMemoryGridStatusRepository from '../../../src/grid/repositories/InMemoryGridStatusRepository';
+import {GridStatus} from '../../../src/grid/entities/GridStatus';
+import {GridStatusServiceImpl} from '../../../src/grid/services/GridStatusServiceImpl';
+import {IGridStatusService} from '../../../src/grid/services/IGridStatusService';
+import {InMemoryGridStatusRepository} from '../../../src/grid/repositories/InMemoryGridStatusRepository';
 
 describe('Grid Status Use Case', function () {
     let gridStatusUseCase: IGridStatusService;

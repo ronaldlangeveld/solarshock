@@ -1,4 +1,4 @@
-import InverterStatus from '../../../src/inverter/entities/InverterStatus';
+import {InverterStatus} from '../../../src/inverter/entities/InverterStatus';
 
 describe('InverterStatus Entity', function () {
     it('should create an inverter status entity', async function () {

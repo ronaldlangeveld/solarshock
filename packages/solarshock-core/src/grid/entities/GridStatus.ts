@@ -12,7 +12,7 @@ type GridStatusRequestModel = {
     inverterId: string;
 }
 
-class GridStatus {
+export class GridStatus {
     id: string;
     createdAt: Date;
     gridFrequency: number;
@@ -45,5 +45,3 @@ class GridStatus {
         return new GridStatus(dataset);
     }
 }
-
-export default GridStatus;

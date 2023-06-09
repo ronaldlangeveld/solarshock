@@ -44,7 +44,7 @@ export type UserResponseModel = {
     updatedAt: Date;
 }
 
-class User {
+export class User {
     id: string;
     createdAt: Date;
     updatedAt: Date;
@@ -113,4 +113,3 @@ class User {
     }
 }
 
-export default User;
