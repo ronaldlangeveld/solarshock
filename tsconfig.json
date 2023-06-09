@@ -8,6 +8,9 @@
             ],
             "@solarshock/solarshock-core/*": [
                 "solarshock-core/src/*"
+            ],
+            "@solarshock/authentication/*": [
+                "authentication/src/*"
             ]
         }
     },
@@ -18,6 +21,9 @@
         },
         {
             "path": "packages/solarshock-core",
+        },
+        {
+            "path": "packages/authentication",
         }
     ]
 }
