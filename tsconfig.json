@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "jsx": "react",
+        "baseUrl": "./packages",
+        "paths": {
+            "@solarshock/in-memory-repository/*": [
+                "in-memory-repository/src/*"
+            ],
+            "@solarshock/solarshock-core/*": [
+                "solarshock-core/src/*"
+            ]
+        }
+    },
+    "files": [],
+    "references": [
+        {
+            "path": "packages/in-memory-repository",
+        },
+        {
+            "path": "packages/solarshock-core",
+        }
+    ]
+}

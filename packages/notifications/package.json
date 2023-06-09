@@ -1,0 +1,25 @@
+{
+  "name": "@solarshock/notifications",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "Ronald Langeveld <hi@ronaldlangeveld.com>",
+  "homepage": "",
+  "license": "MIT",
+  "main": "build/index.js",
+  "directories": {
+    "lib": "src",
+    "test": "test"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "yarn jest",
+    "build": "yarn tsc",
+    "lint:code": "eslint src/ --ext .ts --cache",
+    "lint": "yarn lint:code"
+  },
+  "dependencies": {
+    "crypto": "^1.0.1"
+  }
+}
