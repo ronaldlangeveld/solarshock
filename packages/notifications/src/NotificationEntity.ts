@@ -5,14 +5,14 @@ export const NotificationTypes = {
     INVERTERONLINE: 'inverter_online',
     INVERTERLOWBATTERY: 'inverter_low_battery',
     INVERTERPOWEROFF: 'inverter_power_off',
-    INVERTERPOWERON: 'inverter_power_on',
-}
+    INVERTERPOWERON: 'inverter_power_on'
+};
 
 export const NotificationStatus = {
     SENT: 'sent',
     PENDING: 'pending',
-    FAILED: 'failed',
-}
+    FAILED: 'failed'
+};
 
 export type NotificationEntityTypes = {
     id: string;
@@ -62,18 +62,18 @@ export class Notification {
             type: notification.type,
             message: notification.message,
             status: notification.status,
-            createdAt: notification.createdAt,
-        }
+            createdAt: notification.createdAt
+        };
     }
 
-    static async create (data: NotificationRequestModel): Promise<Notification> {
+    static async create(data: NotificationRequestModel): Promise<Notification> {
         return new Notification({
             id: crypto.randomUUID(),
             createdAt: new Date(),
             inverterId: data.inverterId,
             type: data.type,
             message: '',
-            status: data.status,
+            status: data.status
         });
     }
 }

@@ -4,13 +4,13 @@ import crypto from 'crypto';
 export const UserRoles = {
     ADMIN: 'admin' as const,
     USER: 'user' as const
-}
+};
 
 export const UserStatus = {
     ACTIVE: 'active' as const,
     INACTIVE: 'inactive' as const,
     BANNED: 'banned' as const
-}
+};
 
 export type UserEntityTypes = {
     id: string;
