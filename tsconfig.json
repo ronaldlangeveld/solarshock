@@ -11,6 +11,9 @@
             ],
             "@solarshock/authentication/*": [
                 "authentication/src/*"
+            ],
+            "@solarshock/solarshock-api": [
+                "solarshock-api/src/*"
             ]
         }
     },
@@ -24,6 +27,9 @@
         },
         {
             "path": "packages/authentication",
+        },
+        {
+            "path": "packages/solarshock-api",
         }
     ]
 }
