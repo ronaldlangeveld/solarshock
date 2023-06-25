@@ -1,23 +1,38 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {Request, Response} from 'express';
 import {IUserService, User} from '@solarshock/solarshock-core';
+import {IAuthenticationService} from '@solarshock/authentication';
 
-export interface IAuthenticationController {
+export interface IAccountsController {
     getUsers(req: Request, res: Response): Promise<void>;
     addUser(req: Request, res: Response): Promise<void>;
+    authenticateUser(req: Request, res: Response): Promise<void>;
 }
 
-export class AccountsController implements IAuthenticationController{
+export class AccountsController implements IAccountsController{
     private _userUseCase: IUserService;
+    private _authenticationService: IAuthenticationService;
 
-    constructor(userUseCase: IUserService) {
+    constructor(userUseCase: IUserService, authenticationService: IAuthenticationService) {
         this._userUseCase = userUseCase;
+        this._authenticationService = authenticationService;
     }
 
     async getUsers(req: Request, res: Response) {
         try {
             const accounts = await this._userUseCase.findAllUsers();
-            res.json(accounts);
+            res.json(
+                accounts.map((account: User) => {
+                    return {
+                        id: account.id,
+                        email: account.email,
+                        firstName: account.firstName,
+                        lastName: account.lastName,
+                        role: account.role,
+                        status: account.status
+                    };
+                })
+            );
         } catch (error:any) {
             res.status(400).json({error: error.message});
         }
@@ -28,6 +43,42 @@ export class AccountsController implements IAuthenticationController{
             const users = await User.create(req.body);
             const createdAccount = await this._userUseCase.createUser(users);
             res.json(createdAccount);
+        } catch (e:any) {
+            res.status(400).json({error: e.message});
+        }
+    }
+
+    async authenticateUser(req: Request, res: Response) {
+        try {
+            const {email, password} = req.body;
+
+            const user = await this._userUseCase.findUserByEmail(email);
+
+            if (!user) {
+                res.status(400).json({error: 'Email or Password not found'});
+                return;
+            }
+
+            const isPasswordValid = await user.comparePassword(password);
+
+            if (!isPasswordValid) {
+                res.status(400).json({error: 'Email or Password not found'});
+                return;
+            }
+
+            const token = await this._authenticationService.createToken(user.id);
+
+            res.json({
+                user: {
+                    id: user.id,
+                    email: user.email,
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    role: user.role,
+                    status: user.status
+                },
+                token: token
+            });
         } catch (e:any) {
             res.status(400).json({error: e.message});
         }

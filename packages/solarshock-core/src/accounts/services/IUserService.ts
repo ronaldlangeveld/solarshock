@@ -8,5 +8,6 @@ export interface IUserService {
     findUserByEmail(email: string): Promise<User | null>;
     findAllUsers(): Promise<User[]>;
     createBatchUsers(users: User[]): Promise<User[]>;
+    verifyEmailAndPassword(email: string, password: string): Promise<boolean>;
 }
 

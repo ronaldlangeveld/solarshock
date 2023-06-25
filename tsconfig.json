@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "incremental": true,
         "jsx": "react",
         "baseUrl": "./packages",
         "paths": {
@@ -14,6 +15,9 @@
             ],
             "@solarshock/solarshock-api": [
                 "solarshock-api/src/*"
+            ],
+            "@solarshock/notifications" : [
+                "notifications/src/*"
             ]
         }
     },
@@ -30,6 +34,9 @@
         },
         {
             "path": "packages/solarshock-api",
+        },
+        {
+            "path": "packages/notifications",
         }
     ]
 }

@@ -9,4 +9,3 @@ export interface IUserRepository {
     findAll(): Promise<User[]> | [];
     createBatch(users: User[]): Promise<User[]>;
 }
-

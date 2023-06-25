@@ -16,9 +16,7 @@ describe('User Use Case', function () {
                 email: 'dobby@hogwarts.co.uk',
                 password: 'socksislife1992',
                 firstName: 'Dobby',
-                lastName: 'The House Elf',
-                role: UserRoles.USER,
-                status: UserStatus.ACTIVE
+                lastName: 'The House Elf'
             });
 
             const createdUser = await userUseCase.createUser(user);
@@ -35,9 +33,7 @@ describe('User Use Case', function () {
                 email: 'dobby@hogwarts.co.uk',
                 password: 'socksislife1992',
                 firstName: 'Dobby',
-                lastName: 'The House Elf',
-                role: UserRoles.USER,
-                status: UserStatus.ACTIVE
+                lastName: 'The House Elf'
             });
 
             await userUseCase.createUser(user);
@@ -50,9 +46,7 @@ describe('User Use Case', function () {
                 email: 'dobby@hogwarts.co.uk',
                 password: 'socksislife1992',
                 firstName: 'Dobby',
-                lastName: 'The House Elf',
-                role: UserRoles.USER,
-                status: UserStatus.ACTIVE
+                lastName: 'The House Elf'
             });
 
             const createdUser = await userUseCase.createUser(user);
@@ -92,6 +86,22 @@ describe('User Use Case', function () {
             expect(updatedUser4?.password).not.toEqual(newPassword);
             // check that password starts with $2b$10$ which is the bcrypt hash
             expect(updatedUser4?.password).toMatch(/^\$2b\$10\$/);
+
+            createdUser.updateStatus('banned');
+
+            const updatedUser5 = await userUseCase.updateUser(createdUser);
+
+            expect(updatedUser5).toBeInstanceOf(User);
+
+            expect(updatedUser5?.status).toEqual(UserStatus.BANNED);
+
+            createdUser.updateRole('admin');
+
+            const updatedUser6 = await userUseCase.updateUser(createdUser);
+
+            expect(updatedUser6).toBeInstanceOf(User);
+
+            expect(updatedUser6.role).toEqual(UserRoles.ADMIN);
         });
 
         it('should find a user by id', async function () {
@@ -99,9 +109,7 @@ describe('User Use Case', function () {
                 email: 'dobby@hogwarts.co.uk',
                 password: 'socksislife1992',
                 firstName: 'Dobby',
-                lastName: 'The House Elf',
-                role: UserRoles.USER,
-                status: UserStatus.ACTIVE
+                lastName: 'The House Elf'
             });
 
             const createdUser = await userUseCase.createUser(user);
@@ -111,6 +119,38 @@ describe('User Use Case', function () {
             expect(foundUser).toBeInstanceOf(User);
 
             expect(foundUser?.id).toEqual(createdUser.id);
+        });
+
+        it('should verify by email and password', async function () {
+            const user = await User.create({
+                email: 'dobby@hogwarts.co.uk',
+                password: 'socksislife1992',
+                firstName: 'Dobby',
+                lastName: 'The House Elf'
+            });
+
+            await userUseCase.createUser(user);
+
+            const verified = await userUseCase.verifyEmailAndPassword('dobby@hogwarts.co.uk', 'socksislife1992');
+
+            expect(verified).toBeTruthy();
+        });
+
+        it('should not verify by email and password if email does not exist', async function () {
+            await expect(userUseCase.verifyEmailAndPassword('triddle@hogwarts.onion', 'voldemort1234')).rejects.toThrowError('Credentials are invalid');
+        });
+
+        it('should not verify by email and password if password is incorrect', async function () {
+            const user = await User.create({
+                email: 'dobby@hogwarts.co.uk',
+                password: 'socksislife1992',
+                firstName: 'Dobby',
+                lastName: 'The House Elf'
+            });
+
+            await userUseCase.createUser(user);
+
+            await expect(userUseCase.verifyEmailAndPassword('dobby@hogwarts.co.uk', 'socksislife')).rejects.toThrowError('Credentials are invalid');
         });
 
         it('should return null if user with id does not exist', async function () {
@@ -128,9 +168,7 @@ describe('User Use Case', function () {
                 email: 'dobby@hogwarts.co.uk',
                 password: 'socksislife1992',
                 firstName: 'Dobby',
-                lastName: 'The House Elf',
-                role: UserRoles.USER,
-                status: UserStatus.ACTIVE
+                lastName: 'The House Elf'
             });
 
             const createdUser = await userUseCase.createUser(user);
@@ -147,18 +185,14 @@ describe('User Use Case', function () {
                 email: 'dobby@hogwarts.co.uk',
                 password: 'socksislife1992',
                 firstName: 'Dobby',
-                lastName: 'The House Elf',
-                role: UserRoles.USER,
-                status: UserStatus.ACTIVE
+                lastName: 'The House Elf'
             });
 
             const user2 = await User.create({
                 email: 'hagrid@hogwarts.co.uk',
                 password: 'dragonsarecool',
                 firstName: 'Rubeus',
-                lastName: 'Hagrid',
-                role: UserRoles.USER,
-                status: UserStatus.ACTIVE
+                lastName: 'Hagrid'
             });
 
             const users = [user, user2];
@@ -175,18 +209,14 @@ describe('User Use Case', function () {
                 email: 'dobby@hogwarts.co.uk',
                 password: 'socksislife1992',
                 firstName: 'Dobby',
-                lastName: 'The House Elf',
-                role: UserRoles.USER,
-                status: UserStatus.ACTIVE
+                lastName: 'The House Elf'
             });
 
             const user2 = await User.create({
                 email: 'dobby@hogwarts.co.uk',
                 password: 'socksislife1992',
                 firstName: 'Dobby',
-                lastName: 'The House Elf',
-                role: UserRoles.USER,
-                status: UserStatus.ACTIVE
+                lastName: 'The House Elf'
             });
 
             const users = [user, user2];
@@ -199,18 +229,14 @@ describe('User Use Case', function () {
                 email: 'dobby@hogwarts.co.uk',
                 password: 'socksislife1992',
                 firstName: 'Dobby',
-                lastName: 'The House Elf',
-                role: UserRoles.USER,
-                status: UserStatus.ACTIVE
+                lastName: 'The House Elf'
             });
 
             const user2 = await User.create({
                 email: 'harry@hogwarts.co.uk',
                 password: 'iloveMybroomstickGoGryffindor',
                 firstName: 'Harry',
-                lastName: 'Potter',
-                role: UserRoles.USER,
-                status: UserStatus.ACTIVE
+                lastName: 'Potter'
             });
 
             const dobbyAccount = await userUseCase.createUser(user);
@@ -228,18 +254,14 @@ describe('User Use Case', function () {
                 email: 'dobby@hogwarts.co.uk',
                 password: 'socksislife1992',
                 firstName: 'Dobby',
-                lastName: 'The House Elf',
-                role: UserRoles.USER,
-                status: UserStatus.ACTIVE
+                lastName: 'The House Elf'
             });
 
             const user2 = await User.create({
                 email: 'hagrid@hogwarts.co.uk',
                 password: 'dragonsarecool',
                 firstName: 'Rubeus',
-                lastName: 'Hagrid',
-                role: UserRoles.ADMIN,
-                status: UserStatus.ACTIVE
+                lastName: 'Hagrid'
             });
 
             const users = [user, user2];
@@ -257,18 +279,14 @@ describe('User Use Case', function () {
                 email: 'dobby@hogwarts.co.uk',
                 password: 'socksislife1992',
                 firstName: 'Dobby',
-                lastName: 'The House Elf',
-                role: UserRoles.USER,
-                status: UserStatus.ACTIVE
+                lastName: 'The House Elf'
             });
 
             const user2 = await User.create({
                 email: 'hagrid@hogwarts.co.uk',
                 password: 'dragonsarecool',
                 firstName: 'Rubeus',
-                lastName: 'Hagrid',
-                role: UserRoles.ADMIN,
-                status: UserStatus.ACTIVE
+                lastName: 'Hagrid'
             });
 
             const users = [user, user2];

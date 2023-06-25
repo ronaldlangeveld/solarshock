@@ -15,17 +15,13 @@ export class UserServiceImpl implements IUserService {
             throw new Error('User email already exists');
         }
 
-        // if this is the first user, make them an admin else default to user
+        // if this is the first user, make them an admin and active else default to user
         if ((await this.userRepository.findAll()).length === 0) {
             user.role = UserRoles.ADMIN;
+            user.status = UserStatus.ACTIVE;
         } else {
             user.role = UserRoles.USER;
         }
-
-        // by default we are going to make the user inactive
-        // they will need to verify their email address
-
-        user.status = UserStatus.INACTIVE;
 
         return this.userRepository.create(user);
     }
@@ -69,5 +65,19 @@ export class UserServiceImpl implements IUserService {
         }
 
         return this.userRepository.createBatch(usersToSave);
+    }
+
+    async verifyEmailAndPassword(email: string, password: string): Promise<boolean> {
+        const user = await this.userRepository.findByEmail(email);
+        if (!user) {
+            throw new Error('Credentials are invalid');
+        }
+        const compare = await user.comparePassword(password);
+
+        if (!compare) {
+            throw new Error('Credentials are invalid');
+        }
+
+        return true;
     }
 }

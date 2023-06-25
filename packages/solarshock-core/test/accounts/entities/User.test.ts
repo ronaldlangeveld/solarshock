@@ -7,8 +7,6 @@ describe('User Entity', function () {
             password: 'test',
             firstName: 'minki',
             lastName: 'langeveld',
-            role: UserRoles.ADMIN,
-            status: UserStatus.ACTIVE,
             accountId: '1'
         };
         const user = await User.create(dataset);
@@ -22,8 +20,6 @@ describe('User Entity', function () {
             password: 'sausagesRuleTheWorld',
             firstName: 'sashi',
             lastName: 'langeveld',
-            role: UserRoles.USER,
-            status: UserStatus.ACTIVE,
             accountId: '1'
         };
 
@@ -74,11 +70,83 @@ describe('User Entity', function () {
             password: 'sausagesRuleTheWorld',
             firstName: 'sashi',
             lastName: 'langeveld',
-            role: UserRoles.USER,
-            status: UserStatus.ACTIVE,
             accountId: '1'
         };
 
         await expect(User.create(dataset)).rejects.toThrow();
+    });
+
+    it('should compare the password', async function () {
+        const dataset = {
+            email: 'sashi.forever.puppy@sausagemail.com',
+            password: 'sausagesRuleTheWorld',
+            firstName: 'sashi',
+            lastName: 'langeveld',
+            accountId: '1'
+        };
+
+        const user = await User.create(dataset);
+
+        expect(await user.comparePassword(dataset.password)).toBe(true);
+    });
+
+    it('should return false if password comparison is false', async function () {
+        const dataset = {
+            email: 'sashi.forever.puppy@sausagemail.com',
+            password: 'sausagesRuleTheWorld',
+            firstName: 'sashi',
+            lastName: 'langeveld',
+            accountId: '1'
+        };
+
+        const user = await User.create(dataset);
+
+        expect(await user.comparePassword('sashithequeen')).toBe(false);
+    });
+
+    it('defaults to user role and inactive status', async function () {
+        const dataset = {
+            email: 'sashi.forever.puppy@sausagemail.com',
+            password: 'sausagesRuleTheWorld',
+            firstName: 'sashi',
+            lastName: 'langeveld',
+            accountId: '1'
+        };
+
+        const user = await User.create(dataset);
+
+        expect(user.role).toBe(UserRoles.USER);
+    });
+
+    it('should update user role', async function () {
+        const dataset = {
+            email: 'sashi.forever.puppy@sausagemail.com',
+            password: 'sausagesRuleTheWorld',
+            firstName: 'sashi',
+            lastName: 'langeveld',
+            accountId: '1'
+        };
+
+        const user = await User.create(dataset);
+
+        await user.updateRole('admin');
+
+        expect(user.role).toBe(UserRoles.ADMIN);
+    });
+
+    it('should update user status', async function () {
+        const dataset = {
+            email: 'sashi.forever.puppy@sausagemail.com',
+            password: 'sausagesRuleTheWorld',
+            firstName: 'sashi',
+            lastName: 'langeveld',
+            accountId: '1'
+        };
+
+        const user = await User.create(dataset);
+
+        await user.updateStatus('active');
+
+        expect(user.status).toBe(UserStatus.ACTIVE);
     });
 });

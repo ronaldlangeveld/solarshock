@@ -1,11 +1,11 @@
 import express from 'express';
 import {Server} from './server';
 import {
-    AuthenticationRouter
+    AccountsRouter
 } from './routes';
 
 import {InMemoryUserRepository} from '@solarshock/solarshock-core';
-// import {InMemoryUserRepository} from '../../infrastructure/data/Memory/InMemoryRepisitories';
+import {InMemoryAuthenticationRepository} from '@solarshock/authentication';
 
 export class APIServer {
     private app: express.Application;
@@ -17,7 +17,8 @@ export class APIServer {
         this.serverInstance = new Server({
             app: this.app,
             port: 3000,
-            userRepository: new InMemoryUserRepository()
+            userRepository: new InMemoryUserRepository(),
+            authenticationRepository: new InMemoryAuthenticationRepository()
         });
 
         this.setupMiddleware();
@@ -30,7 +31,7 @@ export class APIServer {
 
     private setupRoutes() {
         const routers = [
-            new AuthenticationRouter(this.serverInstance)
+            new AccountsRouter(this.serverInstance)
         ];
 
         routers.forEach((router) => {

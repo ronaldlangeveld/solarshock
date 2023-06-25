@@ -29,8 +29,6 @@ export type UserRequestModel = {
     password: string;
     firstName: string;
     lastName: string;
-    role: typeof UserRoles[keyof typeof UserRoles]; 
-    status: typeof UserStatus[keyof typeof UserStatus];
 }
 
 export type UserResponseModel = {
@@ -84,6 +82,18 @@ export class User {
         return this.password = await bcrypt.hash(password, 10);
     }
 
+    async comparePassword(password: string): Promise<boolean> {
+        return bcrypt.compare(password, this.password);
+    }
+
+    async updateRole(role: typeof UserRoles[keyof typeof UserRoles]): Promise<typeof UserRoles[keyof typeof UserRoles]> {
+        return this.role = role;
+    }
+
+    async updateStatus(status: typeof UserStatus[keyof typeof UserStatus]): Promise<typeof UserStatus[keyof typeof UserStatus]> {
+        return this.status = status;
+    }
+
     static async create(data: UserRequestModel): Promise<User> {
         // we need to make sure they have a password
         if (!data.password || data.password === '') {
@@ -104,8 +114,8 @@ export class User {
             password: hashedPassword,
             firstName: data.firstName,
             lastName: data.lastName,
-            role: data.role,
-            status: data.status
+            role: UserRoles.USER,
+            status: UserStatus.INACTIVE
         };
         return new User(
             dataset
