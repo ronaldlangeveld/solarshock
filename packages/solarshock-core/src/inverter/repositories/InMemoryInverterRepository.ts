@@ -22,7 +22,7 @@ export class InMemoryInverterRepository extends InMemoryRepository<Inverter> imp
 
     async findByName(name: string): Promise<Inverter | null> {
         const inverters = await super.findAll();
-        return inverters.find(inverter => inverter.name === name) || null;
+        return inverters.find((inverter:Inverter) => inverter.name === name) || null;
     }
     
     async findAll(): Promise<Inverter[]> {

@@ -19,7 +19,7 @@
     "typescript": "^5.1.3"
   },
   "scripts": {
-    "build": "lerna run build --stream",
+    "build": "lerna run build",
     "lint": "lerna run lint --stream --parallel",
     "test": "lerna run test",
     "dev:server": "nodemon",

@@ -15,13 +15,14 @@ export class InMemoryInverterStatusRepository extends InMemoryRepository<Inverte
         const inverterStatuses = await super.findAll();
 
         if (order === 'desc') {
-            return inverterStatuses.filter(inverterStatus => inverterStatus.inverterId === inverterId)
-                .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
+            return inverterStatuses.filter(
+                (inverterStatus:InverterStatus) => inverterStatus.inverterId === inverterId)
+                .sort((a:InverterStatus, b:InverterStatus) => b.createdAt.getTime() - a.createdAt.getTime())
                 .slice(0, limit);
         }
 
-        return inverterStatuses.filter(inverterStatus => inverterStatus.inverterId === inverterId)
-            .sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime())
+        return inverterStatuses.filter((inverterStatus:InverterStatus) => inverterStatus.inverterId === inverterId)
+            .sort((a:InverterStatus, b:InverterStatus) => a.createdAt.getTime() - b.createdAt.getTime())
             .slice(0, limit);
     }
 

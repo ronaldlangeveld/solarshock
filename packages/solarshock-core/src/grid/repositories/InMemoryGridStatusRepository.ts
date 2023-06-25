@@ -15,13 +15,13 @@ export class InMemoryGridStatusRepository extends InMemoryRepository<GridStatus>
         const gridStatuses = await super.findAll();
 
         if (order === 'desc') {
-            return gridStatuses.filter(gridStatus => gridStatus.inverterId === inverterId)
-                .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
+            return gridStatuses.filter((gridStatus:GridStatus) => gridStatus.inverterId === inverterId)
+                .sort((a:GridStatus, b:GridStatus) => b.createdAt.getTime() - a.createdAt.getTime())
                 .slice(0, limit);
         }
 
-        return gridStatuses.filter(gridStatus => gridStatus.inverterId === inverterId)
-            .sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime())
+        return gridStatuses.filter((gridStatus:GridStatus) => gridStatus.inverterId === inverterId)
+            .sort((a:GridStatus, b:GridStatus) => a.createdAt.getTime() - b.createdAt.getTime())
             .slice(0, limit);
     }
 
