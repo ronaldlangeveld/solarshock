@@ -4,6 +4,12 @@
   "workspaces": [
     "packages/*"
   ],
+  "monorepo": {
+    "public": false,
+    "internalPackages": true,
+    "repo": "https://github.com/ronaldlangeveld/solarshock",
+    "scope": "@solarshock"
+  },
   "devDependencies": {
     "@types/jest": "^29.5.2",
     "@typescript-eslint/eslint-plugin": "^5.59.5",
