@@ -21,7 +21,8 @@
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
-    "crypto": "^1.0.1"
+    "crypto": "^1.0.1",
+    "@solarshock/in-memory-repository": "^0.0.0"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
