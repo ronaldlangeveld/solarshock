@@ -14,6 +14,7 @@
     "src"
   ],
   "scripts": {
+    "dev": "yarn test --watch",
     "test": "yarn jest",
     "build": "yarn tsc",
     "lint:code": "eslint src/ --ext .ts --cache",

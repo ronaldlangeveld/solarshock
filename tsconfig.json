@@ -18,6 +18,9 @@
             ],
             "@solarshock/notifications" : [
                 "notifications/src/*"
+            ],
+            "@solarshock/solarman-adapter": [
+                "solarman-adapter/src/*"
             ]
         }
     },
@@ -37,6 +40,9 @@
         },
         {
             "path": "packages/notifications",
+        },
+        {
+            "path": "packages/solarman-adapter",
         }
     ]
 }

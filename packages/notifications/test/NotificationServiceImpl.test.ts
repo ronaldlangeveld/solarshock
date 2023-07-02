@@ -7,11 +7,16 @@ describe('NotificationServiceImpl', function () {
 
     const dataset = {
         inverterId: '1234',
-        reason: 'GRID_DOWN'
+        batteryLevel: 89,
+        gridFrequency: 50,
+        currentConsumption: 600,
+        currentProduction: 1500
     };
+
     beforeEach(function () {
         notificationServiceImpl = new NotificationServiceImpl(new InMemoryNotificationRepository());
     });
+
     it('should create a NotificationServiceImpl', async function () {
         const notificationEntity = await NotificationEntity.create(dataset);
 
@@ -78,8 +83,11 @@ describe('NotificationServiceImpl', function () {
         await notificationServiceImpl.createNotification(notificationEntity);
 
         const notificationEntity2 = await NotificationEntity.create({
-            inverterId: '123',
-            reason: 'GRID_UP'
+            inverterId: '1234',
+            batteryLevel: 89,
+            gridFrequency: 0,
+            currentConsumption: 600,
+            currentProduction: 1500
         });
 
         jest.useFakeTimers();
@@ -110,7 +118,11 @@ describe('NotificationServiceImpl', function () {
 
         const notificationEntity2 = await NotificationEntity.create({
             inverterId: '123',
-            reason: 'GRID_UP'
+            batteryLevel: 89,
+            gridFrequency: 0,
+            currentConsumption: 600,
+            currentProduction: 1500
+            
         });
 
         jest.useFakeTimers();
@@ -131,7 +143,10 @@ describe('NotificationServiceImpl', function () {
 
         const notificationEntity2 = await NotificationEntity.create({
             inverterId: '123',
-            reason: 'GRID_UP'
+            batteryLevel: 89,
+            gridFrequency: 0,
+            currentConsumption: 600,
+            currentProduction: 1500
         });
 
         jest.useFakeTimers();

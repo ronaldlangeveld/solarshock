@@ -3,6 +3,7 @@ export interface IRepository<T> {
     findById(id: string): Promise<T | null>;
     findAll(): Promise<T[]>;
     deleteById(id: string): Promise<void>;
+    findLatest(): Promise<T | null>;
   }
   
 export class InMemoryRepository<T> implements IRepository<T> {
@@ -23,5 +24,13 @@ export class InMemoryRepository<T> implements IRepository<T> {
   
     async deleteById(id: string): Promise<void> {
         delete this.db[id];
+    }
+
+    async findLatest(): Promise<T | null> {
+        const items = await this.findAll();
+        if (items.length === 0) {
+            return null;
+        }
+        return items[items.length - 1];
     }
 }

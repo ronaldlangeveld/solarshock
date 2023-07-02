@@ -32,6 +32,10 @@ class TestInMemoryRepository extends InMemoryRepository <ITestEntity> {
     async findAll(): Promise<ITestEntity[]> {
         return super.findAll();
     }
+
+    async findLatest(): Promise<ITestEntity | null> {
+        return super.findLatest();
+    }
 }
 
 describe('InMemoryRepository', function () {
@@ -45,7 +49,6 @@ describe('InMemoryRepository', function () {
 
         const createdEntity = await repository.create(entity);
         expect(createdEntity).toEqual(entity);
-
     });
 
     it('can Update an entity', async function () {
@@ -137,5 +140,28 @@ describe('InMemoryRepository', function () {
 
         const createdEntities = await Promise.all(entities.map(entity => repository.create(entity)));
         expect(createdEntities).toEqual(entities);
+    });
+
+    it('can Find latest entity', async function () {
+        const repository = new TestInMemoryRepository();
+
+        const entities = [
+            {
+                id: '1',
+                name: 'test',
+                age: 10
+            },
+            {
+                id: '2',
+                name: 'test2',
+                age: 20
+            }
+        ];
+
+        const createdEntities = await Promise.all(entities.map(entity => repository.create(entity)));
+        expect(createdEntities).toEqual(entities);
+
+        const latestEntity = await repository.findLatest();
+        expect(latestEntity).toEqual(entities[1]);
     });
 });
