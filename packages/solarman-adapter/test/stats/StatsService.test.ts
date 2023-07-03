@@ -71,7 +71,6 @@ describe('Solarman Adapter Stats Service', function () {
     test('should throw if error fetching new stats', async function () {
         const authData = await authService.create();
         mockApiClient.getInverterAndGridData = jest.fn().mockRejectedValue(new Error('mock-error'));
-
         await expect(statsService.getStats('123', authData)).rejects.toThrow('Error getting stats entity: Error: mock-error');
     });
 });
