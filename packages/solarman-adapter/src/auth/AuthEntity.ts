@@ -25,23 +25,23 @@ export type AuthEntityRequestModel = {
 };
 
 export class AuthEntity {
-    private readonly _id: string;
-    private readonly _accessToken: string;
-    private readonly _refreshToken: string;
-    private readonly _expiresIn: number;
-    private readonly _createdAt: Date;
-    private readonly _expiresAt: Date;
+    id: string;
+    accessToken: string;
+    refreshToken: string;
+    expiresIn: number;
+    createdAt: Date;
+    expiresAt: Date;
 
     constructor(auth: AuthEntityProps) {
-        this._id = auth.id;
-        this._accessToken = auth.accessToken;
-        this._refreshToken = auth.refreshToken;
-        this._expiresIn = auth.expiresIn;
-        this._createdAt = auth.createdAt;
-        this._expiresAt = auth.expiresAt;
+        this.id = auth.id;
+        this.accessToken = auth.accessToken;
+        this.refreshToken = auth.refreshToken;
+        this.expiresIn = auth.expiresIn;
+        this.createdAt = auth.createdAt;
+        this.expiresAt = auth.expiresAt;
     }
 
-    toJson(auth: AuthEntity): AuthEntityResponseModel {
+    toJson(auth: AuthEntity): AuthEntityProps {
         return {
             id: auth.id,
             accessToken: auth.accessToken,
@@ -52,33 +52,8 @@ export class AuthEntity {
         };
     }
 
-    get id(): string {
-        return this._id;
-    }
-
-    get accessToken(): string {
-        return this._accessToken;
-    }
-
-    get refreshToken(): string {
-        return this._refreshToken;
-    }
-
-    get expiresIn(): number {
-        // expires in milliseconds from creation date, data from Solarman
-        return this._expiresIn;
-    }
-
-    get createdAt(): Date {
-        return this._createdAt;
-    }
-
-    get expiresAt(): Date {
-        return this._expiresAt;
-    }
-
     public isExpired(): boolean {
-        return this._expiresAt.getTime() < Date.now();
+        return this.expiresAt.getTime() < Date.now();
     }
 
     static async create(auth: AuthEntityRequestModel): Promise<AuthEntity> {
@@ -92,4 +67,3 @@ export class AuthEntity {
         });
     }
 }
-// new Date().getTime() + response.data.expires_in

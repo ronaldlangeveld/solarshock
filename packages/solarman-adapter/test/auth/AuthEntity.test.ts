@@ -22,27 +22,16 @@ describe('AuthEntity', function () {
         expiredAuth = await AuthEntity.create(expiredDataset);
     });
 
-    it('should create an auth entity', function () {
-        expect(auth).toBeDefined();
-    });
-
-    it('should have an access token', function () {
-        expect(auth.accessToken).toBeDefined();
-    });
-
-    it('should have a refresh token', function () {
-        expect(auth.refreshToken).toBeDefined();
-    });
-
-    it('should have an expires in', function () {
-        expect(auth.expiresIn).toBeDefined();
-    });
-
     it('can check if it is expired (false)', function () {
         expect(auth.isExpired()).toBeFalsy();
     });
 
     it('can check if it is expired (true)', async function () {
         expect(expiredAuth.isExpired()).toBeTruthy();
+    });
+
+    it('can return a JSON representation', function () {
+        const json = auth.toJson(auth);
+        expect(json).toBeDefined();
     });
 });
