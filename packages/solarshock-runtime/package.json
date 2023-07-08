@@ -1,5 +1,5 @@
 {
-  "name": "@solarshock/solarman-adapter",
+  "name": "@solarshock/solarshock-runtime",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "Ronald Langeveld <hi@ronaldlangeveld.com>",
@@ -15,20 +15,20 @@
   ],
   "scripts": {
     "dev": "yarn test --watch",
-    "test": "yarn jest",
     "build": "yarn tsc",
     "lint:code": "eslint src/ --ext .ts --cache",
     "lint": "yarn lint:code"
-  },
-  "dependencies": {
-    "@solarshock/in-memory-repository": "^0.0.0",
-    "@solarshock/solarshock-core": "^0.0.0",
-    "axios": "^1.4.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.59.5",
     "@typescript-eslint/parser": "^5.59.2",
     "eslint": "^8.42.0",
     "eslint-plugin-ghost": "^2.17.0"
+  },
+  "dependencies": {
+    "node-cron": "^3.0.2",
+    "@solarshock/solarshock-core": "^0.0.0",
+    "@solarshock/notificaitons": "^0.0.0",
+    "@solarshock/": "^0.0.0",
   }
 }

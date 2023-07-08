@@ -1,12 +1,12 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-import {startServer} from '@solarshock/solarshock-api';
+import {startServer as API} from '@solarshock/solarshock-api';
 
 const args = process.argv;
 
 if (args.includes('--api')) {
-    startServer();
+    API();
 }
 
-export {startServer};
+export {API};

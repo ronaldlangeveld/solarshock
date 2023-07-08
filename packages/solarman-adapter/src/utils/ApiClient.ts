@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {AuthEntity} from '../auth/AuthEntity';
-import {StatsEntity} from '../stats/StatsEntity';
+import {StatsEntity} from '@solarshock/solarshock-core';
 
 export type StatusResponseTypes = {
     name: string;

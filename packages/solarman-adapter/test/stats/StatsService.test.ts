@@ -3,10 +3,11 @@ import {
     InMemoryAuthServiceRepository,
     AuthEntity,
     SolarmanApiClient,
-    StatsEntity,
     IStatsService,
     StatsServiceImpl
 } from '../../src';
+
+import {StatsEntity} from '@solarshock/solarshock-core';
 
 jest.mock('../../src/utils/ApiClient');
 
@@ -52,7 +53,7 @@ describe('Solarman Adapter Stats Service', function () {
         );
       
         authService = new AuthServiceImpl(authServiceRepository, mockApiClient);
-        statsService = new StatsServiceImpl(mockApiClient);
+        statsService = new StatsServiceImpl(mockApiClient, authService);
     });
   
     afterEach(function () {
@@ -60,8 +61,7 @@ describe('Solarman Adapter Stats Service', function () {
     });
   
     test('should create a new stats entity', async function () {
-        const authData = await authService.create();
-        const result = await statsService.getStats('123', authData);
+        const result = await statsService.getStats('123');
 
         expect(mockApiClient.authenticate).toHaveBeenCalled();
         expect(mockApiClient.getInverterAndGridData).toHaveBeenCalled();
@@ -69,8 +69,7 @@ describe('Solarman Adapter Stats Service', function () {
     });
 
     test('should throw if error fetching new stats', async function () {
-        const authData = await authService.create();
         mockApiClient.getInverterAndGridData = jest.fn().mockRejectedValue(new Error('mock-error'));
-        await expect(statsService.getStats('123', authData)).rejects.toThrow('Error getting stats entity: Error: mock-error');
+        await expect(statsService.getStats('123')).rejects.toThrow('Error getting stats entity: Error: mock-error');
     });
 });

@@ -1,6 +1,4 @@
-import {StatsEntity} from './StatsEntity';
-import {AuthEntity} from '../auth/AuthEntity';
-
+import {StatsEntity} from '@solarshock/solarshock-core';
 export interface IStatsService {
-    getStats(inverterId:string, authData: AuthEntity): Promise<StatsEntity>;
+    getStats(inverterId:string): Promise<StatsEntity>;
 }
