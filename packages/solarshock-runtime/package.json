@@ -28,7 +28,6 @@
   "dependencies": {
     "node-cron": "^3.0.2",
     "@solarshock/solarshock-core": "^0.0.0",
-    "@solarshock/notificaitons": "^0.0.0",
-    "@solarshock/": "^0.0.0",
+    "@solarshock/notifications": "^0.0.0"
   }
 }
